@@ -1,0 +1,250 @@
+@media print{
+	@page {
+		size: landscape;
+		margin: 0.5cm;
+	}}
+
+body {
+			font-size: 14px;
+			font-family: "Microsoft YaHei" ! important;
+			color: #000;
+			margin:0px;
+			padding:0px;
+            background-color: #dbdad8;
+            overflow-x:hidden;
+	   	}
+
+		.olMap img {max-width:none !important;}
+	   	.right {
+			float: right;
+	    }
+
+	    .map-row {
+	   		background-color:#fff;
+	    	width:29.7cm;
+
+	    	margin:0.2cm auto 0;
+	    }
+
+	   	.navleft {
+			/*width: 74%;
+			margin-right: 280px;
+			padding: 8px 6px;
+			height: 97%;
+			*/
+			margin-right: 7.7cm;
+			padding-right: 0.2cm;
+			width:21.8cm;
+			height: 16.6cm;
+
+	   	}
+
+	   	#map {
+
+           }
+	   	.navright {
+	   		/*
+			color: #000;
+			float: right;
+            width:280px;
+            height: 100%;
+			background-color: #565656;
+			*/
+			position: relative;
+			color: #000;
+			float: right;
+            width:7.7cm;
+            height: 17cm;
+			background-color: #565656;
+           }
+	   	#user {
+	   		font-family: "Microsoft YaHei" ! important;
+			color: #000;
+			font-size: 16px;
+			position: relative;
+			height: 42px;
+			border-bottom: 1px solid #000;
+			line-height: 42px;
+			padding: 0px 10px;
+	  	}
+	   	.set {
+			color: #000;
+			font-size: 16px;
+			position: relative;
+			height: 60px;
+			border-bottom: 1px solid #000;
+			line-height: 24px;
+ 	    }
+
+	   	.navfooter {
+	   		width: 100%;
+			font-size: 14px;
+			color: #000;
+			line-height: 20px;
+			padding: 10px 10px;
+			position: absolute;
+			top: 15.5cm;
+
+	    }
+	    .navfooter span {
+			margin-bottom: -6px;
+			margin-left: 30px;
+	    }
+
+
+		.settitle ul{
+			padding: 0px;
+			margin: 0px;
+		}
+		.settitle li{
+			list-style-type: none;
+		}
+
+	    .dllists{
+	    	width: 100%;
+	    }
+
+		.dllists ul{
+			padding: 0px;
+			margin: 0px;
+			list-style: none;
+	    }
+		.dllists li{
+		    height: 24px;
+		    line-height: 24px;
+		    float: left;
+		    text-align: center;
+		}
+		.dllists li.d{
+			display: none;
+		}
+		.dllists li.s{
+			width: 40px;
+		}
+		.dllists li.m{
+			width: 64px;
+		}
+		.dllists li.sc{
+			width:40px;
+			cursor: pointer;
+		}
+		.dllists li.sc:hover {
+			color: #50a69b;
+		}
+		.dllists li.l{
+			width: 120px;
+		}
+
+		.dltitle {
+			width: 100%;
+			border: solid #000;
+			border-width: 0px 0px 1px 0px;
+		}
+		.dltitle li {
+			height: 30px;
+			line-height: 30px;
+			border-width: 0px 0px 0px 0px;
+		}
+
+		#setting{
+	    	margin: -48px 18px;
+			float: right;
+			width: 44px;
+			height: 48px;
+			cursor: pointer;
+	    }
+		#setting{
+			background: url("../images/print.png") no-repeat left top;
+		}
+		#setting:hover {
+			background-position: 0 -51px;
+		}
+
+		.navdate {
+		}
+
+		.xllist{
+			width: 100%;
+			border: solid #000;
+			border-width: 0px 0px 1px 0px;
+			line-height: 30px;
+			height: 28px;
+		}
+
+		.xllist ul{
+			padding: 0px;
+			margin: 0px;
+			list-style: none;
+	    }
+		.xllist li{
+		    float: left;
+		    text-align: center;
+		}
+		.xllist li.s{
+			width: 40px;
+		}
+		.xllist li.m{
+			width: 80px;
+		}
+		.xllist li.l{
+			width: 160px;
+		}
+
+		.recoder ul{
+			padding: 8px;
+			margin: 0px;
+			list-style-type: none;
+			border-bottom: 1px solid #000;
+		}
+		.recoder li{
+			line-height: 24px;
+			text-align: left;
+		}
+
+		@media print {
+			.page-break	{ display: block; page-break-before: always; }
+		}
+
+		#memo {
+			color: #000;
+            height: 16.5cm;
+            position: relative;
+            background-color: #fff;
+		}
+		#memo .mlist{
+			width: 310px;
+			line-height: 28px;
+			padding: 6px 10px;
+		}
+		#memo div .l{
+			float: left;
+			width: 280px;
+		}
+		#memo div .m{
+			float: left;
+			width: 28px;
+		}
+
+		#memo div ol li{
+			font-size:12px;
+		}
+
+
+	    /* Clear Fix */
+		.clearfix{
+			height:0;
+			clear:both;
+			visibility:hidden;
+			overflow: hidden;
+		}
+		
+		.smallmap .olTileImage{
+		    -webkit-filter: grayscale(100%);
+		}
+		
+		.predictTitle{
+			text-align: center;
+			padding:5px 0px;
+			border: solid #666;
+			border-width: 0px 0px 1px 0px;
+		}

@@ -1,0 +1,122 @@
+/* here you can put your own css to customize and override the theme */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, 微软雅黑, sans-serif;
+
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-family: "Helvetica Neue", Helvetica, Arial, 微软雅黑, sans-serif;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.table td.center, .table th.center {
+  text-align: center;
+}
+.table td.right, .table th.right {
+  text-align: right;
+}
+.dropdowna{
+  padding: 7px 0px 39px!important;
+}
+.dropdownLast{
+  padding: 0px 0px 0px!important;
+  margin-top: 10px!important;
+}
+.page-header.navbar .page-logo {
+  width: 60px;
+}
+.site-title {
+  float: left;
+  font-family: 黑体, sans-serif;
+  font-size: 28px;
+  color: #fff;
+  line-height: 46px;
+}
+.table .fit {
+  width: 1px;
+  padding-right:3px;
+}
+.page-header.navbar .page-logo .logo-default {
+ 	margin: 0 0 0 -20px;
+ 	height: 46px;
+}
+.label, .badge {
+	font-family: Verdana, Helvetica, 微软雅黑, sans-serif;
+}
+
+.gray-map.olMap .olTileImage{
+  -webkit-filter: grayscale(80%) hue-rotate(0deg) invert(0%) brightness(100%) contrast(100%);
+}
+
+.dark-map.olMap .olTileImage{
+  -webkit-filter: grayscale(80%) hue-rotate(0deg) invert(90%) brightness(100%) contrast(100%);
+}
+
+.link-img:hover {
+  background-color: #4e6a8b;
+}
+
+
+.link-hover {
+  background-color:#4e6a8b;
+}
+
+.link-visited {
+  background-color:#3979c4;
+}
+
+.page-logo {
+  width:50px !important;
+}
+
+table {
+  table-layout: fixed;
+}
+
+/*td{*/
+  /*text-align: center;*/
+  /*vertical-align: middle !important;*/
+/*}*/
+
+/*th {*/
+  /*text-align: center;*/
+/*}*/
+
+.navigation-active{
+  background-color: #3979c4;
+}
+
+.h{
+  color: #f22e00 !important;
+}
+
+.menu{
+  line-height: 46px;
+}
+
+.menu-hd a{
+  color:#6C6C6C;
+  font-size:12px;
+  margin-right: 7px;
+}
+
+.pipe{
+  float: left;
+  height: 35px;
+  line-height: 44px;
+  padding: 0 5px;
+  font-style: normal;
+  color: #6C6C6C;
+  margin-right: 5px;
+}
+
+ul li {
+  list-style: none;
+}
+
+.menu {
+  float: left;
+}
+

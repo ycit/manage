@@ -1,0 +1,13 @@
+label.error {
+    color: #ff3f13 !important;
+    font-size: 12px;
+    margin: 5px 0px 0px 1px;
+    font-weight: 400;
+}
+
+label.error-msg {
+    color: #ff3f13 !important;
+    font-size: 12px;
+    margin: 5px 0px 0px 1px;
+    font-weight: 400;
+}

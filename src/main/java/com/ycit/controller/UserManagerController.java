@@ -29,11 +29,15 @@ public class UserManagerController {
         this.userService = userService;
     }
 
-    @RequestMapping("/users")
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String home(Model model) {
-        List<User> users = userService.finds();
-        model.addAttribute("users", users);
         return "/user-manager";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public List<User> users() {
+       return userService.finds();
     }
 
     @ResponseBody

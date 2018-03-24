@@ -34,6 +34,7 @@
     <link href="${ctx}/static/js/slider/unslider.css" rel="stylesheet" type="text/css"/>
     <%--<link href="${ctx}/static/js/datatables/datatables.css" rel="stylesheet" type="text/css"/>--%>
     <link href="${ctx}/static/js/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+    <%--<link href="${ctx}/static/js/datatables/DataTables-1.10.16/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>--%>
     <%--<link href="${ctx}/static/js/slider/reset.css" rel="stylesheet" type="text/css"/>--%>
     <%--<link href="${ctx}/static/js/site/site.css" rel="stylesheet" type="text/css"/>--%>
     <link href="${ctx}/static/css/custom.css" rel="stylesheet" type="text/css"/>
@@ -44,7 +45,7 @@
 
 </head>
 
-<body class="page-header-fixed page-container-bg-solid page-boxed" <sitemesh:getProperty property="body.id" writeEntireProperty="true" />>
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white" <sitemesh:getProperty property="body.id" writeEntireProperty="true" />>
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
@@ -60,27 +61,12 @@
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
 
-                <%--<%@include file="/WEB-INF/layouts/backend-navigation.jsp"%>--%>
+                <%@include file="/WEB-INF/layout/navigation.jsp"%>
 
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <%--<shiro:user>--%>
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                <li class="dropdown dropdown-user">
-                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 
-                            <span class="username username-hide-on-mobile">
-                                <%--<shiro:principal />--%>
-                                ${sessionScope.xm}
-                            </span>
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-default">
-                        <li>
-                            <a href="${ctx}/back/logout">
-                                <i class="icon-key"></i> 退出 </a>
-                        </li>
-                    </ul>
-                </li>
                 <%--</shiro:user>--%>
                 <!-- END USER LOGIN DROPDOWN -->
 
@@ -134,6 +120,7 @@
 <script src="${ctx}/static/js/jquery-validator/jquery.validate.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/jquery-validator/locale/messages_zh.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/util/utils.js" type="text/javascript"></script>
+<script src="${ctx}/static/js/custom/global-init.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 <sitemesh:getProperty property="page.page_script"></sitemesh:getProperty>
 </body>

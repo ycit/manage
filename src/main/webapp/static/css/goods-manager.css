@@ -1,0 +1,18 @@
+.form-body label {
+    float:left;
+    width:78px;
+    text-align: left;
+    display: inline-block;
+}
+.form-body .row {
+    margin-top: 5px;
+}
+
+.sear-form .form-actions {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.sear-form .form-actions .btn {
+    margin-top: 10px;
+}

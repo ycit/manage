@@ -20,15 +20,8 @@ public class AppUserFilter extends UserFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest req, ServletResponse response) throws Exception {
-        HttpServletRequest request = (HttpServletRequest) req;
-
         HttpServletResponse httpResponse = WebUtils.toHttp(response);
-        httpResponse.setStatus(HttpServletResponse.SC_OK);
-
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().printf(ERROR_JSON, request.getRequestURI());
-
+        httpResponse.sendRedirect("/back/login");
         return false;
     }
 

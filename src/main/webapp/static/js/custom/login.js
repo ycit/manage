@@ -45,8 +45,7 @@ $(function () {
                     remember:remember
                 },
                 success:function (data) {
-                    console.log(typeof data);
-                    if (data == "success") {
+                    if (data === "success") {
                         window.location.href="/back/users";
                     }else {
                         $("#notice").html(data);

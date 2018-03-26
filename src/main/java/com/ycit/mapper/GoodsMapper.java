@@ -2,7 +2,9 @@ package com.ycit.mapper;
 
 import com.ycit.bean.entity.GoodsSearchForm;
 import com.ycit.bean.modal.Goods;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,8 +18,14 @@ import java.util.List;
 @Repository
 public interface GoodsMapper {
 
-    int insert(@Param("Goods")Goods goods);
+    int insert(@Param("goods")Goods goods);
 
     List<Goods> finds(@Param("goods")GoodsSearchForm goods);
+
+    @Delete("delete from goods where id = #{id}")
+    int deleteById(@Param("id")int id);
+
+    @Update("update goods set img = #{img},thumbnail = #{thumbnail} where id = #{id}")
+    int updateById(@Param("id") int id, @Param("img")String img, @Param("thumbnail")String thumbnail);
 
 }

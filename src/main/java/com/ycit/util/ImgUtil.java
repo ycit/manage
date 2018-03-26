@@ -67,8 +67,8 @@ public class ImgUtil {
                 g.dispose();
                 itemp = image;
             }
-            createDir(storeDir);
-            storeDir = storeDir + File.separator + UUIDGenerator.getUUID() + ".jpg";
+            createDir(storeDir.substring(0, storeDir.lastIndexOf(File.separator)));
+//            storeDir = storeDir + File.separator + UUIDGenerator.getUUID() + ".jpg";
             ImageIO.write((BufferedImage) itemp, "JPEG", new File(storeDir));      //输出压缩图片
         } catch (IOException e) {
             LOGGER.debug("异常详情", e);
@@ -155,6 +155,7 @@ public class ImgUtil {
         targetDir = targetDir + File.separator + UUIDGenerator.getUUID() + ".jpg";
         ImageIO.write(bufferedimage, "jpg", new File(targetDir));
     }
+
 
     public static void main(String[] args) throws Exception{
         String source="E:\\desktop picture\\776f02ae661a2328bce237c6dd8fc95f.jpg";

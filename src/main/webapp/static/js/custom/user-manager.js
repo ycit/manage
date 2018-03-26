@@ -111,15 +111,6 @@ $(function () {
             })
         }
     });
-
-    jQuery.validator.addMethod("positiveInteger", function(value, element) {
-        var reg = /^[1-9]\d*$/;
-        return this.optional(element) || reg.test(value);
-    }, "必须输入正整数");
-
-    jQuery.validator.addMethod("between", function(value, element) {
-        return this.optional(element) ||  value > 0 & value < 10000;
-    }, "充值金额不得高于10000");
     $("#inpour-form").validate({
         rules:{
             num:{

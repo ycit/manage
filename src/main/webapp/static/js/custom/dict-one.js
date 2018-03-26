@@ -28,7 +28,13 @@ $(function () {
             if (!pass) {
                 return;
             }
-            $("#dict-form").submit();
+            utils.modal.myConfirm("提示", "确认修改字典表数据吗？", function (sure) {
+                if (sure) {
+                    $("#dict-form").submit();
+                } else {
+                    return;
+                }
+            });
         }
     });
     

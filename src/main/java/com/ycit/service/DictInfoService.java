@@ -42,4 +42,8 @@ public class DictInfoService {
         return insertBatch(infos);
     }
 
+    public Info findById(int id) {
+        return dictInfoMapper.findById(id);
+    }
+
 }

@@ -19,4 +19,7 @@ public interface DictInfoMapper {
 
     int insertBatch(@Param("infos")List<Info> infos);
 
+    @Select("select * from dict_info where id = #{id}")
+    Info findById(@Param("id")int id);
+
 }

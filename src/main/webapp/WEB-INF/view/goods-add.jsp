@@ -42,7 +42,7 @@
     <!-- END PAGE HEADER-->
     <div class="portlet light bordered">
         <div class="portlet-body form">
-            <form class="form-horizontal" role="form">
+            <form id="goods-form" class="form-horizontal" role="form" enctype="multipart/form-data">
                 <div class="form-body">
                     <div class="form-group">
                         <label class="col-md-3 control-label">商品名称</label>
@@ -54,11 +54,14 @@
                         <label class="col-md-3 control-label">所属品牌</label>
                         <div class="col-md-9">
                             <select class="form-control" name="brandId">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
+                                <c:if test="${brands != null && brands.size() > 0}">
+                                    <c:forEach items="${brands}" var="brand">
+                                        <option value="${brand.id}">${brand.name}</option>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${brands == null || brands.size() == 0}">
+                                    <option value="">暂无可选品牌</option>
+                                </c:if>
                             </select>
                         </div>
                     </div>
@@ -66,22 +69,21 @@
                         <label class="col-md-3 control-label">所属专卖店</label>
                         <div class="col-md-9">
                             <select class="form-control" name="storeId">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
+                                <c:if test="${stores != null && stores.size() > 0}">
+                                    <c:forEach items="${stores}" var="store">
+                                        <option value="${store.id}">${store.name}</option>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${stores == null || stores.size() == 0}">
+                                    <option value="">暂无可选专卖店</option>
+                                </c:if>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">上传图片</label>
                         <div class="col-md-9">
-                            <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="fa fa-envelope"></i>
-                                                        </span>
-                                <input type="email" class="form-control" placeholder="Email Address"> </div>
+                            <input id="goods-image" type="file" name="images" multiple>
                         </div>
                     </div>
                     <div class="form-group">
@@ -105,35 +107,41 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">种类</label>
                         <div class="col-md-9">
-                            <select class="form-control" name="storeId">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
+                            <select class="form-control" name="category">
+                                <c:if test="${categories != null && categories.size() > 0}">
+                                    <c:forEach items="${categories}" var="category">
+                                        <option value="${category.id}">${category.name}</option>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${categories == null || categories.size() == 0}">
+                                    <option value="0">暂无可选种类</option>
+                                </c:if>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">用途</label>
                         <div class="col-md-9">
-                            <select class="form-control" name="storeId">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                                <option>Option 5</option>
+                            <select class="form-control" name="purpose">
+                                <c:if test="${usages != null && usages.size() > 0}">
+                                    <c:forEach items="${usages}" var="usage">
+                                        <option value="${usage.id}">${usage.name}</option>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${usages == null || usages.size() == 0}">
+                                    <option value="0">暂无可选专卖店</option>
+                                </c:if>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">容量</label>
+                        <label class="col-md-3 control-label">容量(A.H)</label>
                         <div class="col-md-9">
                             <input type="text" name="capacity" class="form-control" placeholder="输入容量">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">电压</label>
+                        <label class="col-md-3 control-label">电压(V)</label>
                         <div class="col-md-9">
                             <input type="text" name="voltage" class="form-control" placeholder="输入电压">
                         </div>
@@ -142,51 +150,16 @@
                 <div class="form-actions">
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
-                            <button type="submit" class="btn green">Submit</button>
-                            <button type="button" class="btn default">Cancel</button>
+                            <button data-click="submit" type="button" class="btn green">新增</button>
+                            <button data-click="test" type="button" class="btn green">新增</button>
+                            <a href="${ctx}/back/goods" type="button" class="btn default">返回</a>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <!--     bootstrap modal          -->
-    <div class="modal fade" id="inpour-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">用户充值</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="portlet-body">
-                        <form id="inpour-form" class="form-horizontal" role="form">
-                            <input type="hidden" value="" id="user-id"/>
-                            <div class="form-body">
-                                <div class="form-group">
-                                    <%--<div class="col-md-3">--%>
-                                    <label class="col-md-3 control-label">输入充值金额</label>
-                                    <%--</div>--%>
-                                    <div class="col-md-4">
-                                        <input id="user-num" type="text" name="num" class="form-control"
-                                               placeholder="输入充值金额">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" data-click="recharge" class="btn green">充值</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <%--<button type="button" class="btn btn-primary" data-click="comment">评论</button>--%>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <content tag="page_script">
         <script src="${ctx}/static/js/custom/goods-add.js" type="text/javascript"></script>

@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ycit.mapper.GoodsMapper">
-    <sql id="columns">
+    <sql id="insert-columns">
         store_id, brand_id, name, img, thumbnail, price, stock,
-        description, capacity, category, 'usage', voltage, create_time, modify_time, status
+        description, capacity, category, purpose, voltage
     </sql>
-    <sql id="columns-all">
-        store_id, brand_id, name, img, thumbnail, price, sale_count, stock,
-        description, capacity, category, 'usage', voltage, create_time, modify_time, status
+    <sql id="select-columns">
+        id,store_id, brand_id, name, img, thumbnail, price, sale_count, stock,
+        description, capacity, category, purpose, voltage, create_time, modify_time, status
     </sql>
     <insert id="insert" parameterType="com.ycit.bean.modal.Goods" useGeneratedKeys="true"
             keyColumn="goods.id" keyProperty="goods.id">
         INSERT INTO goods (
-             <include refid="columns" />
+             <include refid="insert-columns" />
         ) VALUES (#{goods.storeId}, #{goods.brandId}, #{goods.name}, #{goods.img}, #{goods.thumbnail},
         #{goods.price}, #{goods.stock}, #{goods.description}, #{goods.capacity}, #{goods.category},
-        #{goods.usage}, #{goods.voltage})
+        #{goods.purpose}, #{goods.voltage})
     </insert>
     <select id="finds" resultType="com.ycit.bean.modal.Goods" parameterType="com.ycit.bean.entity.GoodsSearchForm">
         SELECT
-        <include refid="columns-all"/>
+        <include refid="select-columns"/>
         FROM goods
         <where>
-            <if test="#{goods.name != null and goods.name != '' }">
+            <if test="goods.name != null">
                 AND name LIKE CONCAT(CONCAT('%', #{goods.name}),'%')
             </if>
-            <if test="#{goods.usage != null}">
-                AND 'usage' = #{goods.usage}
+            <if test="goods.purpose != null">
+                AND purpose = #{goods.purpose}
             </if>
-            <if test="#{goods.category != null}">
+            <if test="goods.category != null">
                 AND category = #{goods.category}
             </if>
-            <if test="#{goods.brandId != null}">
+            <if test="goods.brandId != null">
                 AND brand_id = #{goods.brandId}
             </if>
-            <if test="#{goods.storeId != null}">
+            <if test="goods.storeId != null">
                 AND store_id = #{goods.storeId}
             </if>
-            <if test="#{goods.minVoltage != null}">
+            <if test="goods.minVoltage != null">
                 <![CDATA[
                  AND voltage >= #{goods.minVoltage}
                 ]]>
             </if>
-            <if test="#{goods.maxVoltage != null}">
+            <if test="goods.maxVoltage != null">
                 <![CDATA[
                  AND voltage <= #{goods.maxVoltage}
                 ]]>
             </if>
-            <if test="#{goods.minCapacity != null}">
+            <if test="goods.minCapacity != null">
                 <![CDATA[
                  AND capacity >= #{goods.minCapacity}
                 ]]>
             </if>
-            <if test="#{goods.maxCapacity != null}">
+            <if test="goods.maxCapacity != null">
                 <![CDATA[
                  AND capacity <= #{goods.maxCapacity}
                 ]]>
             </if>
-            <if test="#{goods.minPrice != null}">
+            <if test="goods.minPrice != null">
                 <![CDATA[
                  AND price >= #{goods.minPrice}
                 ]]>
             </if>
-            <if test="#{goods.maxPrice != null}">
+            <if test="goods.maxPrice != null">
                 <![CDATA[
                  AND price <= #{goods.maxPrice}
                 ]]>
             </if>
-            <if test="#{goods.minSaleCount != null}">
+            <if test="goods.minSaleCount != null">
                 <![CDATA[
                  AND sale_count >= #{goods.minSaleCount}
                 ]]>
             </if>
-            <if test="#{goods.maxSaleCount != null}">
+            <if test="goods.maxSaleCount != null">
                 <![CDATA[
                  AND sale_count <= #{goods.maxSaleCount}
                 ]]>

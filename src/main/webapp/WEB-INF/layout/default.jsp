@@ -34,6 +34,7 @@
     <link href="${ctx}/static/js/slider/unslider.css" rel="stylesheet" type="text/css"/>
     <%--<link href="${ctx}/static/js/datatables/datatables.css" rel="stylesheet" type="text/css"/>--%>
     <link href="${ctx}/static/js/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/js/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" type="text/css"/>
     <%--<link href="${ctx}/static/js/datatables/DataTables-1.10.16/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>--%>
     <%--<link href="${ctx}/static/js/slider/reset.css" rel="stylesheet" type="text/css"/>--%>
     <%--<link href="${ctx}/static/js/site/site.css" rel="stylesheet" type="text/css"/>--%>
@@ -114,6 +115,8 @@
 <%--<script src="${ctx}/static/js/dateranges.js" type="text/javascript"></script>--%>
 <script src="${ctx}/static/js/datatables/datatables.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="${ctx}/static/js/bootstrap-fileinput/js/fileinput.js" type="text/javascript"></script>
+<script src="${ctx}/static/js/bootstrap-fileinput/locales/zh.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <%--<script src="${ctx}/static/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>--%>

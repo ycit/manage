@@ -11,8 +11,8 @@ import com.ycit.bean.base.Base;
 public class Goods extends Base {
 
     private int id;
-    private int storeId; //门店id
-    private int brandId; //品牌id
+    private Integer storeId; //门店id
+    private Integer brandId; //品牌id
     private String name; //名称
     private String img; //商品主图
     private String thumbnail;  //商品缩略图
@@ -21,8 +21,8 @@ public class Goods extends Base {
     private int stock;
     private String description;
     private int capacity; // 电池容量
-    private int category; // 电池种类
-    private int usage; // 电池用途
+    private Integer category; // 电池种类
+    private Integer purpose; // 电池用途
     private int voltage; // 电压
 
     public int getId() {
@@ -33,20 +33,36 @@ public class Goods extends Base {
         this.id = id;
     }
 
-    public int getStoreId() {
+    public Integer getStoreId() {
         return storeId;
     }
 
-    public void setStoreId(int storeId) {
+    public void setStoreId(Integer storeId) {
         this.storeId = storeId;
     }
 
-    public int getBrandId() {
+    public Integer getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(int brandId) {
+    public void setBrandId(Integer brandId) {
         this.brandId = brandId;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
+
+    public Integer getCategory() {
+        return category;
+    }
+
+    public Integer getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(Integer purpose) {
+        this.purpose = purpose;
     }
 
     public String getName() {
@@ -111,22 +127,6 @@ public class Goods extends Base {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
-    }
-
-    public int getUsage() {
-        return usage;
-    }
-
-    public void setUsage(int usage) {
-        this.usage = usage;
     }
 
     public int getVoltage() {

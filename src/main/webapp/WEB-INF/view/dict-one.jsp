@@ -66,6 +66,7 @@
                 </div>
                 <div class="form-actions" style="text-align: center">
                     <button data-click="save" type="button" class="btn blue">保存</button>
+                    <a href="${ctx}/back/dict" class="btn default">返回</a>
                 </div>
             </form>
 

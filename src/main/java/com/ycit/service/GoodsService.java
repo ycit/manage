@@ -27,4 +27,17 @@ public class GoodsService {
     public List<Goods> finds(GoodsSearchForm searchForm) {
         return goodsMapper.finds(searchForm);
     }
+
+    public Goods insert(Goods goods) {
+        goodsMapper.insert(goods);
+        return goods;
+    }
+
+    public int deleteById(int id) {
+        return goodsMapper.deleteById(id);
+    }
+
+    public int updateById(int id, String img, String thumbnail) {
+        return goodsMapper.updateById(id, img, thumbnail);
+    }
 }

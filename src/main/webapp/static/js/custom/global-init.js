@@ -27,4 +27,17 @@ $(function () {
     //         }
     //     }
     // });
+    jQuery.validator.addMethod("positiveInteger", function(value, element) {
+        var reg = /^[1-9]\d*$/;
+        return this.optional(element) || reg.test(value);
+    }, "必须输入正整数");
+
+    jQuery.validator.addMethod("bigEqualZero", function(value, element) {
+        var reg = /^[1-9]\d*|0$/;
+        return this.optional(element) || reg.test(value);
+    }, "必须输入正整数 或者 0");
+
+    jQuery.validator.addMethod("between", function(value, element) {
+        return this.optional(element) ||  value > 0 & value < 10000;
+    }, "充值金额不得高于10000");
 })

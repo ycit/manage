@@ -30,10 +30,28 @@ public class GoodsAlbumController extends BaseController<GoodsAlbum> {
         this.goodsAlbumService = goodsAlbumService;
     }
 
+    /**
+     * 商品图片上传
+     * @param goodsId
+     * @param images
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value = "/goods/album", method = RequestMethod.POST)
+    @RequestMapping(value = "/goods/album/upload", method = RequestMethod.POST)
     public ApiResponse<GoodsAlbum> saveImg(@RequestParam("goodsId")int goodsId, @RequestParam("images")MultipartFile[] images) {
         List<GoodsAlbum> goodsAlbums =  goodsAlbumService.upload(goodsId, images);
+        return success(goodsAlbums, goodsAlbums.size());
+    }
+
+    /**
+     * 根据商品id查找商品图片
+     * @param goodsId 商品id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/goods/album", method = RequestMethod.POST)
+    public ApiResponse<GoodsAlbum> findByGoodsId(@RequestParam("goodsId")int goodsId) {
+        List<GoodsAlbum> goodsAlbums = goodsAlbumService.findByGoodsId(goodsId);
         return success(goodsAlbums, goodsAlbums.size());
     }
 

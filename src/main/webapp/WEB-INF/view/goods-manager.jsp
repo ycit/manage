@@ -16,10 +16,10 @@
 <head>
     <title>用户管理</title>
     <meta charset="utf-8">
-    <link href="${ctx}/static/css/goods-manager.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/css/goods-manager.css" rel="stylesheet" type="text/css"/>
 </head>
 
-<body id="goods-type">
+<body id="goods-manager">
 <div class="page-content" style="min-height:1318px">
     <!-- BEGIN PAGE HEADER-->
     <!-- BEGIN PAGE BAR -->
@@ -130,7 +130,7 @@
             </form>
         </div>
         <div class="portlet" id="goods-content">
-            <div class="actions pull-right">
+            <div class="actions pull-right" style="margin-bottom: 6px;">
                 <a href="${ctx}/back/goods/add" class="btn btn-circle btn-default">
                     <i class="fa fa-x fa-plus"></i> 新增 </a>
             </div>
@@ -140,6 +140,7 @@
                     <th>图片</th>
                     <th>名称</th>
                     <th>品牌</th>
+                    <th>专卖店</th>
                     <th>价格</th>
                     <th>库存</th>
                     <th>用途</th>
@@ -192,7 +193,7 @@
     </div>
 
     <content tag="page_script">
-        <script src="${ctx}/static/js/custom/goods-manager.js" type="text/javascript"></script>
+        <script src="${ctx}/static/back/js/custom/goods-manager.js" type="text/javascript"></script>
     </content>
 
 </body>

@@ -25,6 +25,43 @@ public class Goods extends Base {
     private Integer purpose; // 电池用途
     private int voltage; // 电压
 
+    private String storeName;
+    private String brandName;
+    private String purposeName;
+    private String categoryName;
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getPurposeName() {
+        return purposeName;
+    }
+
+    public void setPurposeName(String purposeName) {
+        this.purposeName = purposeName;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public int getId() {
         return id;
     }

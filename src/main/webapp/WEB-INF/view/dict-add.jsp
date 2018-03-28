@@ -16,7 +16,7 @@
 <head>
     <title>用户管理</title>
     <meta charset="utf-8">
-    <link href="${ctx}/static/css/goods-new.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/css/goods-new.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body id="goods-type">
@@ -117,7 +117,7 @@
     </div>
 
     <content tag="page_script">
-        <script src="${ctx}/static/js/custom/dict-add.js" type="text/javascript"></script>
+        <script src="${ctx}/static/back/js/custom/dict-add.js" type="text/javascript"></script>
     </content>
 
 </body>

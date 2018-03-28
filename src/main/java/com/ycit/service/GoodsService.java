@@ -40,4 +40,12 @@ public class GoodsService {
     public int updateById(int id, String img, String thumbnail) {
         return goodsMapper.updateById(id, img, thumbnail);
     }
+
+    public Goods findById(int id) {
+        return goodsMapper.findById(id);
+    }
+
+    public int updateBeanById(Goods goods) {
+        return goodsMapper.updateBeanById(goods);
+    }
 }

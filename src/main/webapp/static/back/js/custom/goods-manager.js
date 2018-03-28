@@ -4,14 +4,34 @@ $(function () {
         "data": "thumbnail",
         "orderable": false,
         "render":function (thumbnail) {
-            return "<a><img src=" + thumbnail +"></a>";
+            if (thumbnail === null) {
+                thumbnail = "../static/back/img/bad.jpg";
+            }
+            return "<a><img class='goods-thumbnail' src=" + thumbnail +"></a>";
         }
     }, {
         "data": "name",
         "orderable": false
     }, {
-        "data": "brand.name",
-        "orderable": false
+        "data": "brand",
+        "orderable": false,
+        "render":function (brand) {
+            if (brand !== null) {
+                return brand.name;
+            } else {
+                return "";
+            }
+        }
+    }, {
+        "data": "store",
+        "orderable": false,
+        "render": function (store) {
+            if (store !== null) {
+                return store.name;
+            } else {
+                return "";
+            }
+        }
     }, {
         "data": "price",
         "orderable": true,
@@ -19,11 +39,25 @@ $(function () {
         "data": "stock",
         "orderable": true
     }, {
-        "data": "purpose.name",
-        "orderable": false
+        "data": "purpose",
+        "orderable": false,
+        "render": function (purpose) {
+            if (purpose !== null) {
+                return purpose.name;
+            } else {
+                return "";
+            }
+        }
     },{
-        "data": "category.name",
-        "orderable": false
+        "data": "category",
+        "orderable": false,
+        "render": function (category) {
+            if (category !== null) {
+                return category.name;
+            } else {
+                return "";
+            }
+        }
     },{
         "data": "capacity",
         "orderable": true
@@ -34,14 +68,14 @@ $(function () {
         "data": null,
         "orderable": false,
         "render":function (data, type, row, meta) {
-            return "<a class='delete-action' title='删除' data-id='" + row.id +"'><i class=\"fa fa-x fa-trash-o\"></i></a>"
+            return "<a href='/back/goods/edit?id=" + row.id + "' class='edit-action' title='编辑' data-id='" + row.id +"'><i class=\"fa fa-x fa-pencil\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+            "<a class='delete-action' title='删除' data-id='" + row.id +"'><i class=\"fa fa-x fa-trash-o\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
         }
     }];
     // 请求 商品数据
     var params = $("#goods-form").serialize();
-
     search(params, window.table, columns);
-
     // 删除 行事件
     $("#goods-table tbody").on("click", "a.delete-action", function () {
         var that = this;
@@ -71,6 +105,7 @@ function search(params, table, columns) {
     utils.myAjax.post("/back/goods",params,function (data) {
         window.table = $("#goods-table").DataTable({
             data:data,
+            // "scrollX": true,
             columns:columns,
             searching:false,
             "destroy": true,

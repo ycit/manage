@@ -17,6 +17,11 @@
     <title>用户管理</title>
     <meta charset="utf-8">
     <link href="${ctx}/static/back/css/goods-new.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        $(function () {
+            window.goodsId = ${goods.id};
+        })
+    </script>
 </head>
 
 <body id="goods-type">
@@ -30,11 +35,11 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <span>新增商品</span>
+                <span>编辑商品</span>
             </li>
         </ul>
     </div>
-    <h3 class="page-title"> 新增商品
+    <h3 class="page-title"> 编辑商品
         <small></small>
     </h3>
     <%--</div>--%>
@@ -43,11 +48,12 @@
     <div class="portlet light bordered">
         <div class="portlet-body form">
             <form id="goods-form" class="form-horizontal" role="form" enctype="multipart/form-data">
+                <input id="goods-id" type="hidden" value="${goods.id}" name="id">
                 <div class="form-body">
                     <div class="form-group">
                         <label class="col-md-3 control-label">商品名称</label>
                         <div class="col-md-9">
-                            <input type="text" name="name" value="${name}" class="form-control" placeholder="输入商品名称">
+                            <input type="text" name="name" value="${goods.name}" class="form-control" placeholder="输入商品名称">
                         </div>
                     </div>
                     <div class="form-group">
@@ -56,7 +62,7 @@
                             <select class="form-control" name="brandId">
                                 <c:if test="${brands != null && brands.size() > 0}">
                                     <c:forEach items="${brands}" var="brand">
-                                        <option value="${brand.id}">${brand.name}</option>
+                                        <option value="${brand.id}" <c:if test="${goods.brandId==brand.id}">selected</c:if>>${brand.name}</option>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${brands == null || brands.size() == 0}">
@@ -68,10 +74,10 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">所属专卖店</label>
                         <div class="col-md-9">
-                            <select id="goods-store" class="form-control" name="storeId">
+                            <select class="form-control" name="storeId">
                                 <c:if test="${stores != null && stores.size() > 0}">
                                     <c:forEach items="${stores}" var="store">
-                                        <option value="${store.id}">${store.name}</option>
+                                        <option value="${store.id}" <c:if test="${goods.storeId==store.id}">selected</c:if>>${store.name}</option>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${stores == null || stores.size() == 0}">
@@ -89,19 +95,19 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">价格</label>
                         <div class="col-md-9">
-                            <input type="text" name="price" class="form-control" placeholder="输入价格">
+                            <input type="text" name="price" class="form-control" value="${goods.price}" placeholder="输入价格">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">库存</label>
                         <div class="col-md-9">
-                            <input type="text" name="stock" class="form-control" placeholder="输入库存">
+                            <input type="text" name="stock" class="form-control" value="${goods.stock}" placeholder="输入库存">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">描述信息</label>
                         <div class="col-md-9">
-                            <textarea name="description" class="form-control" rows="3"></textarea>
+                            <textarea name="description" class="form-control" rows="3">${goods.description}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -110,7 +116,7 @@
                             <select class="form-control" name="category">
                                 <c:if test="${categories != null && categories.size() > 0}">
                                     <c:forEach items="${categories}" var="category">
-                                        <option value="${category.id}">${category.name}</option>
+                                        <option value="${category.id}" <c:if test="${goods.category==category.id}">selected</c:if>>${category.name}</option>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${categories == null || categories.size() == 0}">
@@ -125,7 +131,7 @@
                             <select class="form-control" name="purpose">
                                 <c:if test="${usages != null && usages.size() > 0}">
                                     <c:forEach items="${usages}" var="usage">
-                                        <option value="${usage.id}">${usage.name}</option>
+                                        <option value="${usage.id}" <c:if test="${goods.purpose==usage.id}">selected</c:if>>${usage.name}</option>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${usages == null || usages.size() == 0}">
@@ -137,20 +143,20 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">容量(A.H)</label>
                         <div class="col-md-9">
-                            <input type="text" name="capacity" class="form-control" placeholder="输入容量">
+                            <input type="text" name="capacity" value="${goods.capacity}" class="form-control" placeholder="输入容量">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">电压(V)</label>
                         <div class="col-md-9">
-                            <input type="text" name="voltage" class="form-control" placeholder="输入电压">
+                            <input type="text" name="voltage" value="${goods.voltage}" class="form-control" placeholder="输入电压">
                         </div>
                     </div>
                 </div>
                 <div class="form-actions">
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
-                            <button data-click="submit" type="button" class="btn green">新增</button>
+                            <button data-click="edit" type="button" class="btn green">修改</button>
                             <a href="${ctx}/back/goods" type="button" class="btn default">返回</a>
                         </div>
                     </div>
@@ -161,7 +167,7 @@
 
 
     <content tag="page_script">
-        <script src="${ctx}/static/back/js/custom/goods-add.js" type="text/javascript"></script>
+        <script src="${ctx}/static/back/js/custom/goods-edit.js" type="text/javascript"></script>
     </content>
 
 </body>

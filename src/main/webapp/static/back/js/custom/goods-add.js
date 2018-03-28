@@ -1,7 +1,9 @@
 $(function () {
     var goodsId;
     var fileInputSelector = $("#goods-image");
-    $("#goods-form").validate({
+    var formSelector = $("#goods-form");
+    // 表单验证
+    formSelector.validate({
         rules: {
             name: {
                 required: true,
@@ -43,9 +45,10 @@ $(function () {
             }
         }
     });
+    //图片上传插件初始化以及事件监听
     fileInputSelector.fileinput({
         language: 'zh', //设置语言
-        uploadUrl: '/back/goods/album',
+        uploadUrl: '/back/goods/album/upload',
         uploadAsync: false,
         showCaption: false,//是否显示标题
         showUpload: false, //是否显示上传按钮
@@ -62,32 +65,32 @@ $(function () {
         layoutTemplates: {
             actionUpload: '',//设置为空可去掉上传按钮
             //actionDelete:'',//设置为空可去掉删除按钮
-            actionZoom: '',//设置为空可去掉预览按钮
+            // actionZoom: '',//设置为空可去掉预览按钮
             indicator: ''//设置为空可去左侧状态
         },
         uploadExtraData: function (previewId, index) {
             //向后台传递id作为额外参数，是后台可以根据id修改对应的图片地址。
             return {goodsId: goodsId};
         }
-    });
-    fileInputSelector.on('fileuploaded', function (event, data, previewId, index) {
+    })
+        .on('fileuploaded', function (event, data, previewId, index) {
         console.log("fileloaded");
         window.location.href = "/back/goods";
-    });
-    fileInputSelector.on('filebatchuploadcomplete', function (event, files, extra) {
+    }).on('filebatchuploadcomplete', function (event, files, extra) {
         console.log('File batch upload complete');
         window.location.href = "/back/goods";
-    });
-    fileInputSelector.on('filebatchuploaderror', function (event, data, msg) {
+    }).on('filebatchuploaderror', function (event, data, msg) {
         var form = data.form, files = data.files, extra = data.extra,
             response = data.response, reader = data.reader;
         console.log('File batch upload error');
         // get message
         alert(msg);
     });
+    //点击事件处理
     utils.quick.click({
+        //表单提交事件
         submit: function () {
-            var pass = $("#goods-form").valid();
+            var pass = formSelector.valid();
             if (!pass) {
                 return;
             }
@@ -95,11 +98,11 @@ $(function () {
             if (imgCount < 0 || imgCount > 5) {
                 utils.modal.myAlert("提示", "图片数量请保持在 1-5 张")
             }
-            var params = $("#goods-form").serialize();
+            var params = formSelector.serialize();
             utils.myAjax.post("/back/goods/add", params, function (data) {
                 if (data.code === 200) {
                     goodsId = data.result[0].id;
-                    $("#goods-image").fileinput("upload");
+                    fileInputSelector.fileinput("upload");
                     // window.location.href = "/back/goods";
                 } else {
                     var msg = data.message;
@@ -110,8 +113,8 @@ $(function () {
             })
         },
         test: function () {
-            var imgCount = $("#goods-image").fileinput('getFilesCount');
-            $("#goods-image").fileinput("upload");
+            var imgCount = formSelector.fileinput('getFilesCount');
+            fileInputSelector.fileinput("upload");
             console.log(imgCount);
         }
     });

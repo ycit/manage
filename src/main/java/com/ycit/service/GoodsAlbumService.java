@@ -9,6 +9,8 @@ import com.ycit.util.UUIDGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -61,11 +63,22 @@ public class GoodsAlbumService {
         return goodsAlbumMapper.findById(id);
     }
 
+    /**
+     * 图片上传业务逻辑
+     * @param goodsId
+     * @param files
+     * @return
+     */
+    @Transactional
     public List<GoodsAlbum> upload(int goodsId, MultipartFile[] files) {
+        List<GoodsAlbum> exist = this.findByGoodsId(goodsId);
+        if (!CollectionUtils.isEmpty(exist)) { //对应图片存在则先删除
+            this.deleteByGoodsId(goodsId);
+        }
         String uploadPath = ConstantDefine.GOODS_IMG_PATH;
-        String imgDir = ConstantDefine.GOODS_IMG_IMG_PATH;
-        String thumbnailDir = ConstantDefine.GOODS_IMG_THUMBNAIL_PATH;
-        String originalDir = ConstantDefine.GOODS_IMG_ORIGINAL_PATH;
+        String imgDir = ConstantDefine.GOODS_IMG_IMG_ABSOLUTE_PATH;
+        String thumbnailDir = ConstantDefine.GOODS_IMG_THUMBNAIL_ABSOLUTE_PATH;
+        String originalDir = ConstantDefine.GOODS_IMG_ORIGINAL_ABSOLUTE_PATH;
         List<GoodsAlbum> goodsAlbums = new ArrayList<>();
         if (files.length > 0) {
             String now = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
@@ -94,11 +107,13 @@ public class GoodsAlbumService {
                 } catch (IOException e) {
                     LOGGER.debug("context", e);
                 }
-                GoodsAlbum goodsAlbum = new GoodsAlbum(goodsId, imgFullPath, thumbnailFullPath);
+                String imgSavePath = File.separator + imgFullPath.substring(imgFullPath.indexOf("mall"), imgFullPath.length());
+                String thumbnailSavePath = File.separator + thumbnailFullPath.substring(thumbnailFullPath.indexOf("mall"), thumbnailFullPath.length());
+                GoodsAlbum goodsAlbum = new GoodsAlbum(goodsId, imgSavePath, thumbnailSavePath);
                 insert(goodsAlbum);
                 goodsAlbums.add(goodsAlbum);
                 if (size == 0) {
-                    goodsService.updateById(goodsId, imgFullPath, thumbnailFullPath);
+                    goodsService.updateById(goodsId, imgSavePath, thumbnailSavePath);
                 }
             }
         }

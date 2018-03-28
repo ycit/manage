@@ -16,10 +16,10 @@
 <head>
     <title>用户管理</title>
     <meta charset="utf-8">
-    <link href="${ctx}/static/css/user-manager.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/css/user-manager.css" rel="stylesheet" type="text/css"/>
 </head>
 
-<body id="dict-type">
+<body id="dict-manager">
 <div class="page-content" style="min-height:1318px">
     <!-- BEGIN PAGE HEADER-->
     <!-- BEGIN PAGE BAR -->
@@ -99,7 +99,7 @@
     </script>
 
     <content tag="page_script">
-        <script src="${ctx}/static/js/custom/dict-manager.js" type="text/javascript"></script>
+        <script src="${ctx}/static/back/js/custom/dict-manager.js" type="text/javascript"></script>
     </content>
 
 </body>

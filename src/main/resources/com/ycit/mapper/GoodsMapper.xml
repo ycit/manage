@@ -79,4 +79,10 @@
             </if>
         </where>
     </select>
+    <update id="updateBeanById" parameterType="com.ycit.bean.modal.Goods">
+        UPDATE goods SET store_id = #{goods.storeId},brand_id = #{goods.brandId}, name= #{goods.name},
+        price = #{goods.price}, stock = #{goods.stock}, description = #{goods.description},
+        capacity = #{goods.capacity}, category = #{goods.category}, purpose = #{goods.purpose},
+        voltage =  #{goods.voltage}, modify_time = sysdate() WHERE id = #{goods.id}
+    </update>
 </mapper>

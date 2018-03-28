@@ -21,27 +21,28 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <link type="image/x-icon" href="${ctx}/static/img/favicon.ico" rel="shortcut icon">
+    <link type="image/x-icon" href="${ctx}/static/back/img/favicon.ico" rel="shortcut icon">
 
-    <link href="${ctx}/static/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="${ctx}/static/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
+    <link href="${ctx}/static/back/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
           type="text/css"/>
-    <link href="${ctx}/static/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
           type="text/css"/>
-    <link href="${ctx}/static/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css"/>
-    <link href="${ctx}/static/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
-    <link href="${ctx}/static/assets/layouts/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
-    <link href="${ctx}/static/js/slider/unslider.css" rel="stylesheet" type="text/css"/>
-    <%--<link href="${ctx}/static/js/datatables/datatables.css" rel="stylesheet" type="text/css"/>--%>
-    <link href="${ctx}/static/js/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="${ctx}/static/js/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" type="text/css"/>
-    <%--<link href="${ctx}/static/js/datatables/DataTables-1.10.16/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>--%>
-    <%--<link href="${ctx}/static/js/slider/reset.css" rel="stylesheet" type="text/css"/>--%>
-    <%--<link href="${ctx}/static/js/site/site.css" rel="stylesheet" type="text/css"/>--%>
-    <link href="${ctx}/static/css/custom.css" rel="stylesheet" type="text/css"/>
-    <link href="${ctx}/static/css/back-common.css" rel="stylesheet" type="text/css"/>
-    <script src="${ctx}/static/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="${ctx}/static/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="${ctx}/static/back/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="${ctx}/static/back/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/assets/layouts/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="${ctx}/static/back/js/slider/unslider.css" rel="stylesheet" type="text/css"/>
+    <%--<link href="${ctx}/static/back/js/datatables/datatables.css" rel="stylesheet" type="text/css"/>--%>
+    <link href="${ctx}/static/back/js/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/js/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" type="text/css"/>
+    <%--<link href="${ctx}/static/back/js/datatables/DataTables-1.10.16/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>--%>
+    <%--<link href="${ctx}/static/back/js/slider/reset.css" rel="stylesheet" type="text/css"/>--%>
+    <%--<link href="${ctx}/static/back/js/site/site.css" rel="stylesheet" type="text/css"/>--%>
+    <link href="${ctx}/static/back/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/js/city-picker/css/city-picker.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/css/back-common.css" rel="stylesheet" type="text/css"/>
+    <script src="${ctx}/static/back/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="${ctx}/static/back/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <sitemesh:head />
 
 </head>
@@ -53,7 +54,7 @@
     <div class="page-header-inner container">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <img src="${ctx}/static/img/cart.jpg" alt="logo" class="logo-default" />
+            <img src="${ctx}/static/back/img/cart.jpg" alt="logo" class="logo-default" />
         </div>
         <div class="site-title">电池在线销售平台后台管理</div>
         <!-- END LOGO -->
@@ -99,31 +100,33 @@
 <%@include file="/WEB-INF/layout/footer.jsp"%>
 <!-- END FOOTER -->
 <!--[if lt IE 9]>
-<script src="${ctx}/static/global/plugins/respond.min.js"></script>
-<script src="${ctx}/static/global/plugins/excanvas.min.js"></script>
+<script src="${ctx}/static/back/global/plugins/respond.min.js"></script>
+<script src="${ctx}/static/back/global/plugins/excanvas.min.js"></script>
 <![endif]-->
 <!-- BEGIN CORE PLUGINS -->
-<%--<script src="${ctx}/static/global/plugins/js.cookie.min.js" type="text/javascript"></script>--%>
-<%--<script src="${ctx}/static/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>--%>
-<%--<script src="${ctx}/static/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>--%>
-<%--<script src="${ctx}/static/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>--%>
-<%--<script src="${ctx}/static/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>--%>
-<script src="${ctx}/static/js/momentjs/moment.js" type="text/javascript"></script>
+<%--<script src="${ctx}/static/back/global/plugins/js.cookie.min.js" type="text/javascript"></script>--%>
+<%--<script src="${ctx}/static/back/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>--%>
+<%--<script src="${ctx}/static/back/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>--%>
+<%--<script src="${ctx}/static/back/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>--%>
+<%--<script src="${ctx}/static/back/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>--%>
+<script src="${ctx}/static/back/js/momentjs/moment.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
-<%--<script src="${ctx}/static/global/scripts/app.min.js" type="text/javascript"></script>--%>
-<%--<script src="${ctx}/static/js/dateranges.js" type="text/javascript"></script>--%>
-<script src="${ctx}/static/js/datatables/datatables.js" type="text/javascript"></script>
-<script src="${ctx}/static/js/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js" type="text/javascript"></script>
-<script src="${ctx}/static/js/bootstrap-fileinput/js/fileinput.js" type="text/javascript"></script>
-<script src="${ctx}/static/js/bootstrap-fileinput/locales/zh.js" type="text/javascript"></script>
+<%--<script src="${ctx}/static/back/global/scripts/app.min.js" type="text/javascript"></script>--%>
+<%--<script src="${ctx}/static/back/js/dateranges.js" type="text/javascript"></script>--%>
+<script src="${ctx}/static/back/js/datatables/datatables.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/bootstrap-fileinput/js/fileinput.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/bootstrap-fileinput/locales/zh.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
-<%--<script src="${ctx}/static/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>--%>
-<script src="${ctx}/static/js/jquery-validator/jquery.validate.js" type="text/javascript"></script>
-<script src="${ctx}/static/js/jquery-validator/locale/messages_zh.js" type="text/javascript"></script>
-<script src="${ctx}/static/js/util/utils.js" type="text/javascript"></script>
-<script src="${ctx}/static/js/custom/global-init.js" type="text/javascript"></script>
+<%--<script src="${ctx}/static/back/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>--%>
+<script src="${ctx}/static/back/js/jquery-validator/jquery.validate.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/jquery-validator/locale/messages_zh.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/util/utils.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/city-picker/js/city-picker.data.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/city-picker/js/city-picker.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/custom/global-init.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 <sitemesh:getProperty property="page.page_script"></sitemesh:getProperty>
 </body>

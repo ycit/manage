@@ -15,6 +15,9 @@ public class GoodsAlbum extends Base {
     private String img;
     private String thumbnail;
 
+    public GoodsAlbum() {
+    }
+
     public GoodsAlbum(int goodsId, String img, String thumbnail) {
         this.goodsId = goodsId;
         this.img = img;

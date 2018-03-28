@@ -24,3 +24,9 @@
     border: 1px solid #c2cad8;
     outline: 0!important;
 }
+
+.goods-thumbnail {
+    display: inline-block;
+    height: auto;
+    max-width: 100%;
+}

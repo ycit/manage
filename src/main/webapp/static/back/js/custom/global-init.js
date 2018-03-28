@@ -40,4 +40,9 @@ $(function () {
     jQuery.validator.addMethod("between", function(value, element) {
         return this.optional(element) ||  value > 0 & value < 10000;
     }, "充值金额不得高于10000");
+
+    jQuery.validator.addMethod("telephone", function(value, element) {
+        var reg = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/
+        return this.optional(element) || reg.test(value);
+    }, "号码不合法(固定号码形式:xxx-xxxxx;手机号码为11位)");
 })

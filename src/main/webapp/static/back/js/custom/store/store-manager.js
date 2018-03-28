@@ -1,41 +1,40 @@
 $(function () {
     var table;
     var columns = [{
-        "data": null,
+        "data": "img",
         "orderable": false,
-        "targets":0
-    },{
-        "data": "id",
-        "orderable": false
-    },{
+        "render":function (img) {
+            if (img === null) {
+                img = "../static/back/img/store.jpg";
+            }
+            return "<a><img class='store-img' src=" + img +"></a>";
+        }
+    }, {
         "data": "name",
-        "orderable": false,
-        "render":function (data, type, row, meta) {
-            return "<a href='/back/dict/" + row.id + "' data-id = '" + row.id +"'>" + data + "</a>"
-        }
-    },{
-        "data": "description",
         "orderable": false
-    },{
-        "data": "createTime",
-        "orderable": true,
-        "render":function (createTime) {
-            return moment(createTime).format("YYYY-M-D H:m:s");
-        }
-    },{
+    }, {
         "data": null,
         "orderable": false,
         "render":function (data, type, row, meta) {
-            return "<a class='delete-action' title='删除' data-id='" + row.id +"'><i class=\"fa fa-x fa-trash-o\"></i></a> &nbsp;&nbsp;&nbsp;"
-                + "<a href='/back/dict/add?id=" + row.id + "' class='edit-action' title='编辑' data-id='" + row.id +"'><i class=\"fa fa-x fa-pencil\"></i></a>&nbsp;&nbsp;&nbsp;";
+            return row.provinceName + row.cityName + row.districtName + row.addressDetail;
+        }
+    }, {
+        "data": "tel",
+        "orderable": false
+    }, {
+        "data": null,
+        "orderable": false,
+        "render":function (data, type, row, meta) {
+            return "<a href='/back/stores/edit?id=" + row.id + "' class='edit-action' title='编辑' data-id='" + row.id +"'><i class=\"fa fa-x fa-pencil\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+                "<a class='delete-action' title='删除' data-id='" + row.id +"'><i class=\"fa fa-x fa-trash-o\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
         }
     }];
-    // 请求 字典表数据
-    utils.myAjax.get("/back/dict/all",{},function (data) {
-        table = $("#dict-table").DataTable({
-            data:data,
+    // 请求 用户数据
+    utils.myAjax.post("/back/stores",{},function (data) {
+        table = $("#store-table").DataTable({
+            data:data.result,
             columns:columns,
-            bAutoWidth:true,
             language: {
                 "sProcessing": "处理中...",
                 "sLengthMenu": "显示 _MENU_ 项结果",
@@ -61,26 +60,15 @@ $(function () {
                 }
             }
         });
-        table.on( 'order.dt search.dt', function () {
-            table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                cell.innerHTML = i+1;
-            } );
-        } ).draw();
-    });
-    // modal 弹框事件
-    $("#dict-table").on("click", ".inpour", function () {
-        var id = $(this).data("id");
-        $("#user-id").attr("value", id);
-        $("#inpour-modal").modal("show");
     });
     // 删除 行事件
-    $("#dict-table tbody").on("click", "a.delete-action", function () {
+    $("#store-table tbody").on("click", "a.delete-action", function () {
         var that = this;
         var sure = utils.modal.myConfirm("提示", "确认删除该行数据吗", function (sure) {
             if (sure) {
                 var id = $(that).data("id");
                 $(that).parents('tr').attr('id', id); // 设置 row id
-                utils.myAjax.post('/back/dict/delete',{id:id}, function (data) {
+                utils.myAjax.post('/back/stores/delete',{id:id}, function (data) {
                     if (data > 0) {
                         table.row('#' + id).remove().draw(false); // 前端移除 row
                     }
@@ -105,15 +93,6 @@ $(function () {
             })
         }
     });
-
-    jQuery.validator.addMethod("positiveInteger", function(value, element) {
-        var reg = /^[1-9]\d*$/;
-        return this.optional(element) || reg.test(value);
-    }, "必须输入正整数");
-
-    jQuery.validator.addMethod("between", function(value, element) {
-        return this.optional(element) ||  value > 0 & value < 10000;
-    }, "充值金额不得高于10000");
     $("#inpour-form").validate({
         rules:{
             num:{

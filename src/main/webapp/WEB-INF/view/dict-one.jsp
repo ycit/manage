@@ -16,7 +16,7 @@
 <head>
     <title>${type.name}管理</title>
     <meta charset="utf-8">
-    <link href="${ctx}/static/css/dict-one.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/css/dict-one.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body id="dict-type">
@@ -113,7 +113,7 @@
     </div>
 
     <content tag="page_script">
-        <script src="${ctx}/static/js/custom/dict-one.js" type="text/javascript"></script>
+        <script src="${ctx}/static/back/js/custom/dict-one.js" type="text/javascript"></script>
     </content>
 
 </body>

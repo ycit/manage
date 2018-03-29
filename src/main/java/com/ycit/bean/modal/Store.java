@@ -1,6 +1,10 @@
 package com.ycit.bean.modal;
 
 import com.ycit.bean.base.Base;
+import com.ycit.bean.entity.StoreForm;
+import org.springframework.beans.BeanUtils;
+
+import java.util.List;
 
 /**
  * 专卖店
@@ -21,6 +25,13 @@ public class Store extends Base {
     private String districtId;
     private String districtName;
     private String addressDetail;
+    private List<StoreBrand> brands;
+
+    public static Store fromBean(StoreForm storeForm) {
+        Store store = new Store();
+        BeanUtils.copyProperties(storeForm, store);
+        return store;
+    }
 
     public String getDistrictId() {
         return districtId;
@@ -115,5 +126,13 @@ public class Store extends Base {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public List<StoreBrand> getBrands() {
+        return brands;
+    }
+
+    public void setBrands(List<StoreBrand> brands) {
+        this.brands = brands;
     }
 }

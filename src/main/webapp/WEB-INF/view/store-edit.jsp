@@ -79,6 +79,16 @@
                             <input id="store-image" type="file" name="img">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">经营品牌</label>
+                        <div class="col-md-9">
+                            <select multiple="multiple" class="multi-select" id="my_multi_select1" name="brands">
+                                <c:forEach items="${brands}" var="brand">
+                                        <option value="${brand.id}" <c:forEach items="${store.brands}" var="storeBrand"><c:if test="${brand.id == storeBrand.brandId}">selected</c:if> </c:forEach>>${brand.name}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-actions">
                     <div class="row">

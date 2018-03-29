@@ -2,12 +2,15 @@ package com.ycit.controller;
 
 import com.google.common.collect.ImmutableList;
 import com.ycit.bean.base.ApiResponse;
+import com.ycit.bean.entity.StoreForm;
 import com.ycit.bean.modal.Store;
+import com.ycit.service.DictInfoService;
 import com.ycit.service.StoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +40,13 @@ public class StoreManagerController extends BaseController<Store> {
         this.storeService = storeService;
     }
 
+    private DictInfoService dictInfoService;
+
+    @Resource
+    public void setDictInfoService(DictInfoService dictInfoService) {
+        this.dictInfoService = dictInfoService;
+    }
+
     /**
      * 专卖店主页
      * @param model
@@ -54,7 +64,7 @@ public class StoreManagerController extends BaseController<Store> {
     @ResponseBody
     @RequestMapping(value = "/stores", method = RequestMethod.POST)
     public ApiResponse<Store> find() {
-        List<Store> storeList = storeService.findAll();
+        List<Store> storeList = storeService.doFind();
         return success(storeList, storeList.size());
     }
 
@@ -63,27 +73,28 @@ public class StoreManagerController extends BaseController<Store> {
      * @return
      */
     @RequestMapping(value = "/stores/add", method = RequestMethod.GET)
-    public String addHome() {
+    public String addHome(Model model) {
+        model.addAttribute("brands", dictInfoService.findBrands());
         return "/store-add";
     }
 
     /**
-     * 新增专卖店页面
-     * @param store
+     * 新增专卖店请求
+     * @param storeForm
      * @param result
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/stores/add", method = RequestMethod.POST)
-    public ApiResponse<Store> add(@Valid Store store, BindingResult result) {
+    @RequestMapping(value = "/stores/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public ApiResponse<Store> add(@Valid @RequestBody StoreForm storeForm, BindingResult result) {
         if (result.hasErrors()) {
             String message =  result.getAllErrors().stream().map(
                     ObjectError:: getDefaultMessage
             ).collect(Collectors.joining(","));
             return error(400, message);
         }
-        storeService.updateById(store);
-        return success(new ArrayList<>(), 0);
+        Store store = storeService.add(storeForm);
+        return success(store == null ? new ArrayList<>():ImmutableList.of(store), 1);
     }
 
     /**
@@ -94,27 +105,27 @@ public class StoreManagerController extends BaseController<Store> {
      */
     @RequestMapping(value = "/stores/edit", method = RequestMethod.GET)
     public String editHome(@RequestParam("id")int id, Model model) {
-        model.addAttribute("store", storeService.findById(id));
+        model.addAttribute("brands", dictInfoService.findBrands());
+        model.addAttribute("store", storeService.editPage(id));
         return "/store-edit";
     }
 
     /**
      * 编辑专卖店请求
-     * @param store
+     * @param storeForm
      * @param result
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/stores/edit", method = RequestMethod.POST)
-    public ApiResponse<Store> edit(@Valid Store store, BindingResult result) {
+    public ApiResponse<Store> edit(@Valid @RequestBody StoreForm storeForm, BindingResult result) {
         if (result.hasErrors()) {
             String message =  result.getAllErrors().stream().map(
                     ObjectError:: getDefaultMessage
             ).collect(Collectors.joining(","));
             return error(400, message);
         }
-        storeService.updateById(store);
-        Store storeDb = storeService.findById(store.getId());
+        Store storeDb = storeService.doEdit(storeForm);
         return success(storeDb == null ? new ArrayList<>() : ImmutableList.of(storeDb), 1);
     }
 
@@ -130,6 +141,11 @@ public class StoreManagerController extends BaseController<Store> {
         return success(store == null ? new ArrayList<>() : ImmutableList.of(store), 1);
     }
 
+    /**
+     * 店铺删除请求
+     * @param id
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/stores/delete", method = RequestMethod.POST)
     public int delete(@RequestParam("id") int id) {

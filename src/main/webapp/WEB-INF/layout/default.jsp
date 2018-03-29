@@ -29,6 +29,8 @@
     <link href="${ctx}/static/back/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
           type="text/css"/>
     <link href="${ctx}/static/back/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="${ctx}/static/back/assets/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css">
+    <link href="${ctx}/static/back/assets/global/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css">
     <link href="${ctx}/static/back/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/static/back/assets/layouts/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
     <link href="${ctx}/static/back/js/slider/unslider.css" rel="stylesheet" type="text/css"/>
@@ -118,11 +120,14 @@
 <script src="${ctx}/static/back/js/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/bootstrap-fileinput/js/fileinput.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/bootstrap-fileinput/locales/zh.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/assets/global/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <%--<script src="${ctx}/static/back/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>--%>
 <script src="${ctx}/static/back/js/jquery-validator/jquery.validate.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/jquery-validator/locale/messages_zh.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/underscore/underscore.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/util/utils.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/city-picker/js/city-picker.data.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/city-picker/js/city-picker.js" type="text/javascript"></script>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ycit.mapper.StoreBrandMapper">
+    <insert id="insertBatch" parameterType="java.util.List"
+            useGeneratedKeys="true">
+        INSERT INTO store_brand
+        (store_id, brand_id, brand_name)
+        VALUES
+        <foreach collection="storeBrands" item="storeBrand" index="index" separator=",">
+            (#{storeBrand.storeId}, #{storeBrand.brandId}, #{storeBrand.brandName})
+        </foreach>
+    </insert>
+</mapper>

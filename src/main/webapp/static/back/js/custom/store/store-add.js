@@ -2,6 +2,32 @@ $(function () {
     var storeForm = $("#store-form");
     var fileInputSelector = $("#store-image");
     var cityPickerSelector = $('#city');
+    var brands = [];
+    var multiSelectOptions = {
+        selectableHeader: "<div class=''>可选品牌</div>",
+        selectionHeader: "<div class=''>已选品牌</div>",
+        afterInit: function() {
+            var selectedDoms = $('#my_multi_select1').find('option:selected');
+            _.each(selectedDoms, function(selectedDom) {
+                brands.push($(selectedDom).val());
+            });
+        },
+        afterSelect: function(values) {
+            _.each(values, function(value) {
+                brands.push(value);
+            });
+        },
+        afterDeselect: function(values) {
+            _.each(values, function(value) {
+                var index = brands.indexOf(value);
+                if (index > -1) {
+                    brands.splice(index, 1);
+                }
+            });
+        },
+
+    };
+    $('#my_multi_select1').multiSelect(multiSelectOptions);
     fileInputSelector.fileinput({
         language: 'zh', //设置语言
         uploadUrl: '/back/stores/img/upload',
@@ -18,7 +44,7 @@ $(function () {
         browseClass: "btn green-soft", //按钮样式
         layoutTemplates: {
             actionUpload: '',//设置为空可去掉上传按钮
-            //actionDelete:'',//设置为空可去掉删除按钮
+            actionDelete:'',//设置为空可去掉删除按钮
             // actionZoom: '',//设置为空可去掉预览按钮
             indicator: ''//设置为空可去左侧状态
         }
@@ -39,9 +65,10 @@ $(function () {
         var provinceId = cityPickerSelector.data('citypicker').getCode("province");
         var cityId = cityPickerSelector.data('citypicker').getCode("city");
         var district = cityPickerSelector.data('citypicker').getCode("district");
-        if (typeof provinceId=== 'undefined' || typeof cityId === 'undefined' ||typeof district === 'undefined') {
-            utils.modal.myAlert("提示", "请选择省市区");
-        }
+        // if (typeof provinceId=== 'undefined' || typeof cityId === 'undefined' ||typeof district === 'undefined') {
+        //     utils.modal.myAlert("提示", "请选择省市区");
+        //     return;
+        // }
         var nameArray = cityPickerSelector.data('citypicker').getVal().split("/");
         var provinceName = nameArray[0];
         var cityName = nameArray[1];
@@ -50,15 +77,10 @@ $(function () {
             id:id,name:name,tel:tel,addressDetail:address,
             provinceName:provinceName,provinceId:provinceId,
             cityName:cityName,cityId:cityId,
-            districtName:districtName,districtId:district
+            districtName:districtName,districtId:district,
+            brands:brands
         }
-        utils.myAjax.post("/back/stores/add", params, function (data) {
-            if (data.code === 200) {
-                window.location.href = "/back/stores";
-            }else {
-                utils.modal.myAlert("提示", data.message);
-            }
-        })
+        doAjax(params);
     }).on('filebatchuploaderror', function (event, data, msg) {
         var form = data.form, files = data.files, extra = data.extra,
             response = data.response, reader = data.reader;
@@ -86,11 +108,46 @@ $(function () {
             var provinceId = $('#city').data('citypicker').getCode("province");
             var cityId = $('#city').data('citypicker').getCode("city");
             var district = $('#city').data('citypicker').getCode("district");
-            if (typeof provinceId=== 'undefined' || typeof cityId === 'undefined' ||typeof district === 'undefined') {
-                utils.modal.myAlert("提示", "请选择省市区");
+            var imgCount = fileInputSelector.fileinput('getFilesCount');
+            if (imgCount < 1) {
+                var id = 0;
+                var name = $("#store-name").val();
+                var tel = $("#store-tel").val();
+                var address = $("#store-address").val();
+                var nameArray = cityPickerSelector.data('citypicker').getVal().split("/");
+                var provinceName = nameArray[0];
+                var cityName = nameArray[1];
+                var districtName= nameArray[2];
+                var params = {
+                    id:id,name:name,tel:tel,addressDetail:address,
+                    provinceName:provinceName,provinceId:provinceId,
+                    cityName:cityName,cityId:cityId,
+                    districtName:districtName,districtId:district,
+                    brands:brands
+                }
+                doAjax(params);
+            } else {
+                fileInputSelector.fileinput("upload");
             }
-            fileInputSelector.fileinput("upload");
 
         }
     })
 })
+
+function doAjax(params) {
+    $.ajax({
+        url:  "/back/stores/add",
+        dataType: 'json',
+        type: 'POST',
+        data: JSON.stringify(params),
+        cache: false,
+        contentType:'application/json',
+        success:function (data) {
+            if (data.code === 200) {
+                window.location.href = "/back/stores";
+            }else {
+                utils.modal.myAlert("提示", data.message);
+            }
+        }
+    })
+}

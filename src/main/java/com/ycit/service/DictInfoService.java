@@ -2,6 +2,7 @@ package com.ycit.service;
 
 import com.ycit.bean.modal.dict.Info;
 import com.ycit.mapper.DictInfoMapper;
+import com.ycit.util.ConstantDefine;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,6 +45,18 @@ public class DictInfoService {
 
     public Info findById(int id) {
         return dictInfoMapper.findById(id);
+    }
+
+    public List<Info> findBrands() {
+        return this.findByTypeId(ConstantDefine.DICT_BRAND_ID);
+    }
+
+    public List<Info> findCategories() {
+        return this.findByTypeId(ConstantDefine.DICT_CATEGORY_ID);
+    }
+
+    public List<Info> findUsages() {
+        return this.findByTypeId(ConstantDefine.DICT_USAGE_ID);
     }
 
 }

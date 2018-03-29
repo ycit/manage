@@ -30,6 +30,7 @@ $(function () {
             initialPreview:imgs,
             initialPreviewAsData:true,
             initialPreviewShowDelete:true,
+            validateInitialCount:true, //是否计算初始化时加载的图片数量
             layoutTemplates: {
                 actionUpload: '',//设置为空可去掉上传按钮
                 //actionDelete:'',//设置为空可去掉删除按钮

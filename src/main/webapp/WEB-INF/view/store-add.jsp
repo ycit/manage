@@ -69,6 +69,16 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-md-3">经营品牌</label>
+                        <div class="col-md-9">
+                            <select multiple="multiple" class="multi-select" id="my_multi_select1" name="brands">
+                                <c:forEach items="${brands}" var="brand">
+                                    <option value="${brand.id}">${brand.name}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-3 control-label">店铺图片</label>
                         <div class="col-md-9">
                             <input id="store-image" type="file" name="img">

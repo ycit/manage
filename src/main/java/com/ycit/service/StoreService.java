@@ -1,7 +1,10 @@
 package com.ycit.service;
 
 import com.ycit.YcitException;
+import com.ycit.bean.entity.StoreForm;
 import com.ycit.bean.modal.Store;
+import com.ycit.bean.modal.StoreBrand;
+import com.ycit.bean.modal.dict.Info;
 import com.ycit.mapper.StoreMapper;
 import com.ycit.util.ConstantDefine;
 import com.ycit.util.ImgUtil;
@@ -9,11 +12,14 @@ import com.ycit.util.UUIDGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +38,20 @@ public class StoreService {
     @Resource
     public void setStoreMapper(StoreMapper storeMapper) {
         this.storeMapper = storeMapper;
+    }
+
+    private DictInfoService dictInfoService;
+
+    @Resource
+    public void setDictInfoService(DictInfoService dictInfoService) {
+        this.dictInfoService = dictInfoService;
+    }
+
+    private StoreBrandService storeBrandService;
+
+    @Resource
+    public void setStoreBrandService(StoreBrandService storeBrandService) {
+        this.storeBrandService = storeBrandService;
     }
 
     public List<Store> findAll() {
@@ -82,6 +102,72 @@ public class StoreService {
             storeMapper.insertImg(store);
         }
         return store;
+    }
+
+    /**
+     * 新增 店铺
+     * @param storeForm
+     * @return
+     */
+    @Transactional
+    public Store add(StoreForm storeForm) {
+        Store store = Store.fromBean(storeForm);
+        if (storeForm.getId() == 0) {
+            this.insert(store);
+        } else {
+            this.updateById(store);
+        }
+        List<Integer> brandIds = storeForm.getBrands();
+        List<StoreBrand> storeBrands = new ArrayList<>();
+        brandIds.forEach(brandId -> {
+            Info info = dictInfoService.findById(brandId);
+            StoreBrand storeBrand = new StoreBrand(store.getId(), info.getId(), info.getName());
+            storeBrands.add(storeBrand);
+        });
+        if (!CollectionUtils.isEmpty(storeBrands)) {
+            storeBrandService.insertBatch(storeBrands);
+        }
+        store.setBrands(storeBrands);
+        return store;
+    }
+
+    public Store editPage(int storeId) {
+        Store store = this.findById(storeId);
+        List<StoreBrand> storeBrands = storeBrandService.findByStoreId(storeId);
+        store.setBrands(storeBrands);
+        return store;
+    }
+
+    @Transactional
+    public Store doEdit(StoreForm storeForm) {
+        int storeId = storeForm.getId();
+        Store store = Store.fromBean(storeForm);
+        this.updateById(store);
+        Store storeDb = this.findById(storeId);
+        storeBrandService.deleteByStoreId(storeId);
+        List<Integer> brandIds = storeForm.getBrands();
+        List<StoreBrand> storeBrands = new ArrayList<>();
+        brandIds.forEach(brandId -> {
+            Info info = dictInfoService.findById(brandId);
+            StoreBrand storeBrand = new StoreBrand(store.getId(), info.getId(), info.getName());
+            storeBrands.add(storeBrand);
+        });
+        if (!CollectionUtils.isEmpty(storeBrands)) {
+            storeBrandService.insertBatch(storeBrands);
+        }
+        storeDb.setBrands(storeBrands);
+        return storeDb;
+    }
+
+    public List<Store> doFind() {
+        List<Store> storeList = this.findAll();
+        List<Store> stores = new ArrayList<>();
+        storeList.forEach(store -> {
+            List<StoreBrand> storeBrands = storeBrandService.findByStoreId(store.getId());
+            store.setBrands(storeBrands);
+            stores.add(store);
+        });
+        return stores;
     }
 
 }

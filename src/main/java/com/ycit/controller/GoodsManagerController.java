@@ -13,7 +13,6 @@ import com.ycit.service.GoodsAlbumService;
 import com.ycit.service.GoodsService;
 import com.ycit.service.StoreService;
 import com.ycit.service.builder.GoodsVoBuilder;
-import com.ycit.util.ConstantDefine;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -81,10 +80,10 @@ public class GoodsManagerController extends BaseController<Goods> {
      */
     @RequestMapping(value = "/goods", method = RequestMethod.GET)
     private String home(Model model) {
-        List<Info> brands = dictInfoService.findByTypeId(ConstantDefine.DICT_BRAND_ID);
+        List<Info> brands = dictInfoService.findBrands();
         List<Store> stores = storeService.findAll();
-        List<Info> categories = dictInfoService.findByTypeId(ConstantDefine.DICT_CATEGORY_ID);
-        List<Info> usages = dictInfoService.findByTypeId(ConstantDefine.DICT_USAGE_ID);
+        List<Info> categories = dictInfoService.findCategories();
+        List<Info> usages = dictInfoService.findUsages();
         model.addAttribute("brands", brands);
         model.addAttribute("stores", stores);
         model.addAttribute("categories", categories);
@@ -112,10 +111,10 @@ public class GoodsManagerController extends BaseController<Goods> {
      */
     @RequestMapping(value = "/goods/add", method = RequestMethod.GET)
     public String addHome(Model model) {
-        List<Info> brands = dictInfoService.findByTypeId(ConstantDefine.DICT_BRAND_ID);
+        List<Info> brands = dictInfoService.findBrands();
         List<Store> stores = storeService.findAll();
-        List<Info> categories = dictInfoService.findByTypeId(ConstantDefine.DICT_CATEGORY_ID);
-        List<Info> usages = dictInfoService.findByTypeId(ConstantDefine.DICT_USAGE_ID);
+        List<Info> categories = dictInfoService.findCategories();
+        List<Info> usages = dictInfoService.findUsages();
         model.addAttribute("brands", brands);
         model.addAttribute("stores", stores);
         model.addAttribute("categories", categories);
@@ -155,10 +154,10 @@ public class GoodsManagerController extends BaseController<Goods> {
 
     @RequestMapping(value = "/goods/edit", method = RequestMethod.GET)
     public String editHome(@RequestParam("id")int id, Model model) {
-        List<Info> brands = dictInfoService.findByTypeId(ConstantDefine.DICT_BRAND_ID);
+        List<Info> brands = dictInfoService.findBrands();
         List<Store> stores = storeService.findAll();
-        List<Info> categories = dictInfoService.findByTypeId(ConstantDefine.DICT_CATEGORY_ID);
-        List<Info> usages = dictInfoService.findByTypeId(ConstantDefine.DICT_USAGE_ID);
+        List<Info> categories = dictInfoService.findCategories();
+        List<Info> usages = dictInfoService.findUsages();
         model.addAttribute("brands", brands);
         model.addAttribute("stores", stores);
         model.addAttribute("categories", categories);

@@ -14,9 +14,9 @@
 <!--[if !IE]><!-->
 <html class="no-js">
 <head>
-    <title>资讯管理</title>
+    <title>最新资讯管理</title>
     <meta charset="utf-8">
-    <link href="${ctx}/static/back/css/user-type.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/css/store-manager.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body id="news-manager">
@@ -24,75 +24,32 @@
     <!-- BEGIN PAGE HEADER-->
     <!-- BEGIN PAGE BAR -->
     <div class="page-bar"></div>
-    <h3 class="page-title"> 用户管理
+    <h3 class="page-title">最新资讯管理
         <small></small>
     </h3>
     <%--</div>--%>
     <!-- END PAGE BAR -->
     <!-- END PAGE HEADER-->
-    <div class="portlet-body">
-        <table class="table table-striped table-bordered dataTable no-footer" id="user-table">
-            <thead>
-            <th>用户名</th>
-            <th>昵称</th>
-            <th>性别</th>
-            <th>生日</th>
-            <th>余额</th>
-            <th>操作</th>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-
-    <!--     bootstrap modal          -->
-    <div class="modal fade" id="inpour-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">用户充值</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="portlet-body">
-                        <form id="inpour-form" class="form-horizontal" role="form">
-                            <input type="hidden" value="" id="user-id"/>
-                            <div class="form-body">
-                                <div class="form-group">
-                                    <%--<div class="col-md-3">--%>
-                                    <label class="col-md-3 control-label">输入充值金额</label>
-                                    <%--</div>--%>
-                                    <div class="col-md-4">
-                                        <input id="user-num" type="text" name="num" class="form-control"
-                                               placeholder="输入充值金额">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" data-click="recharge" class="btn green">充值</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <%--<button type="button" class="btn btn-primary" data-click="comment">评论</button>--%>
-                </div>
-            </div>
+    <div class="portlet">
+        <div class="actions pull-right" style="margin-bottom: 6px">
+            <a href="${ctx}/back/newses/add" class="btn btn-circle btn-default">
+                <i class="fa fa-x fa-plus"></i> 新增 </a>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered dataTable no-footer" id="news-table">
+                <thead>
+                <th>图片</th>
+                <th>链接</th>
+                <th>修改时间</th>
+                <th>操作</th>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </div>
 
-    <script type="text/html" id="channels_warning">
-        <tr>
-            <td>{name}</td>
-            <td><a data-id="{id}" data-click="yesterday">{sendNum}</a></td>
-            <td><a data-id="{id}" data-click="waitSend">{waitNum}</a></td>
-            <td><i class="fa fa-warning"></i></td>
-        </tr>
-    </script>
-
     <content tag="page_script">
-        <script src="${ctx}/static/back/js/custom/user-type.js" type="text/javascript"></script>
+        <script src="${ctx}/static/back/js/custom/news/news-manager.js" type="text/javascript"></script>
     </content>
 
 </body>

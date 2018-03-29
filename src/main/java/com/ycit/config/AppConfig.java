@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
@@ -30,6 +31,7 @@ import java.util.Map;
  * @Date 2018-03-21 11:18
  */
 @Configuration
+@EnableTransactionManagement
 @MapperScan(basePackages="com.ycit.mapper")
 @ComponentScan(basePackages = {"com.ycit.service", "com.ycit.security"})
 public class AppConfig {

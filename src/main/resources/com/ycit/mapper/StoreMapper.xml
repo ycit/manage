@@ -6,4 +6,10 @@
         province_id = #{store.provinceId}, city_name = #{store.cityName}, district_id = #{store.districtId},
         district_name = #{store.districtName}, address_detail = #{store.addressDetail}, modify_time = sysdate() WHERE id = #{store.id}
     </update>
+
+    <insert id="insert" parameterType="com.ycit.bean.modal.Store" useGeneratedKeys="true" keyColumn="store.id" keyProperty="store.id">
+        insert into store (name, province_name, province_id, city_name, city_id, district_name, district_id,
+        tel,address_detail) values (#{store.name}, #{store.provinceName}, #{store.provinceId}, #{store.cityName},
+        #{store.cityId}, #{store.districtName}, #{store.districtId}, #{store.tel}, #{store.addressDetail})
+    </insert>
 </mapper>

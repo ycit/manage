@@ -42,6 +42,7 @@
                 <th>名称</th>
                 <th>地址</th>
                 <th>电话</th>
+                <th>主营品牌</th>
                 <th>操作</th>
                 </thead>
                 <tbody></tbody>

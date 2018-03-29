@@ -19,6 +19,7 @@ public class ConstantDefine {
     public static final String GOODS_IMG_IMG_ABSOLUTE_PATH = "img\\";
     public static final String GOODS_IMG_ORIGINAL_ABSOLUTE_PATH = "original\\";
     public static final String STORE_IMG_PATH = "d:\\mall\\store\\";
+    public static final String NEWS_IMG_PATH = "d:\\mall\\news\\";
 
     public static final int THUMBNAIL_HEIGHT = 210;
     public static final int THUMBNAIL_WIDTH = 240;
@@ -28,6 +29,9 @@ public class ConstantDefine {
 
     public static final int STORE_IMG_HEIGHT = 100;
     public static final int STORE_IMG_WIDTH = 200;
+
+    public static final int NEWS_IMG_HEIGHT = 100;
+    public static final int NEWS_IMG_WIDTH = 200;
 
 
 }

@@ -14,9 +14,9 @@
 <!--[if !IE]><!-->
 <html class="no-js">
 <head>
-    <title>用户管理</title>
+    <title>订单管理</title>
     <meta charset="utf-8">
-    <link href="${ctx}/static/back/css/user-type.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/css/order-manager.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body id="order-manager">
@@ -82,17 +82,8 @@
         </div>
     </div>
 
-    <script type="text/html" id="channels_warning">
-        <tr>
-            <td>{name}</td>
-            <td><a data-id="{id}" data-click="yesterday">{sendNum}</a></td>
-            <td><a data-id="{id}" data-click="waitSend">{waitNum}</a></td>
-            <td><i class="fa fa-warning"></i></td>
-        </tr>
-    </script>
-
     <content tag="page_script">
-        <script src="${ctx}/static/back/js/custom/user-type.js" type="text/javascript"></script>
+        <script src="${ctx}/static/back/js/custom/order-manager.js" type="text/javascript"></script>
     </content>
 
 </body>

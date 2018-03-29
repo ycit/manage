@@ -17,9 +17,6 @@ public interface StoreMapper {
     @Select("select * from store")
     List<Store> findAll();
 
-    @Insert("insert into store (name, tel, province_id, city_id) values (#{store.name}," +
-            "#{store.tel}, #{store.provinceId}, #{store.cityId})")
-    @Options(useGeneratedKeys = true, keyProperty = "store.id", keyColumn = "store.id")
     int insert(@Param("store")Store store);
 
     @Select("select * from store where id = #{id}")

@@ -1,4 +1,4 @@
-package com.ycit.bean.entity;
+package com.ycit.bean.criteria;
 
 import com.ycit.bean.modal.Goods;
 

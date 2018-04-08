@@ -3,7 +3,7 @@ package com.ycit.controller;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.ycit.bean.base.ApiResponse;
-import com.ycit.bean.entity.DictForm;
+import com.ycit.bean.criteria.DictForm;
 import com.ycit.bean.modal.dict.Info;
 import com.ycit.bean.modal.dict.Type;
 import com.ycit.service.DictInfoService;
@@ -48,17 +48,32 @@ public class DictTypeController extends BaseController<Type> {
         this.dictTypeService = dictTypeService;
     }
 
+    /**
+     * 字典表管理页面
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/dict", method = RequestMethod.GET)
     public String home(Model model) {
         return "/dict-manager";
     }
 
+    /**
+     * 请求所有字典表数据
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/dict/all", method = RequestMethod.GET)
     public List<Type> findAll() {
         return dictTypeService.findAll();
     }
 
+    /**
+     * 新增字典表页面 ，后期关闭该入口
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/dict/add", method = RequestMethod.GET)
     public String addHome(@RequestParam(value = "id", required = false, defaultValue = "0")int id,
                           Model model) {
@@ -69,6 +84,13 @@ public class DictTypeController extends BaseController<Type> {
         return "/dict-add";
     }
 
+    /**
+     * 新增字典表请求
+     * @param dictForm
+     * @param result
+     * @param id
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/dict/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ApiResponse<Type> doAdd(@Valid DictForm dictForm, BindingResult result,
@@ -95,13 +117,24 @@ public class DictTypeController extends BaseController<Type> {
         return success(type == null ? new ArrayList<>():ImmutableList.of(type), 1);
     }
 
+    /**
+     * 字典表删除请求，后期关闭该接口
+     * @param id
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/dict/delete", method = RequestMethod.POST)
     public int delete(@RequestParam("id")int id) {
         return dictTypeService.deleteType(id);
     }
 
-    @RequestMapping("/dict/{id}")
+    /**
+     * 字典表详情页面
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/dict/{id}", method = RequestMethod.GET)
     public String dictInto(@PathVariable("id")int id, Model model) {
         List<Info> infos = dictInfoService.findByTypeId(id);
         Type type = dictTypeService.findById(id);
@@ -110,7 +143,12 @@ public class DictTypeController extends BaseController<Type> {
         return "/dict-one";
     }
 
-
+    /**
+     * 修改字典表
+     * @param name
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/dict/one/add", method = RequestMethod.POST)
     public String oneAdd(@RequestParam("name") String name, @RequestParam("id")int id) {
         List<Info> infos = buildInfoList(name, id);

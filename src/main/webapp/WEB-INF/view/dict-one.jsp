@@ -19,7 +19,7 @@
     <link href="${ctx}/static/back/css/dict-one.css" rel="stylesheet" type="text/css"/>
 </head>
 
-<body id="dict-type">
+<body id="dict-manager">
 <div class="page-content" style="min-height:1318px">
     <!-- BEGIN PAGE HEADER-->
     <!-- BEGIN PAGE BAR -->

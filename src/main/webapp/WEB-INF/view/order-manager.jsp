@@ -31,59 +31,65 @@
     <!-- END PAGE BAR -->
     <!-- END PAGE HEADER-->
     <div class="portlet-body">
-        <table class="table table-striped table-bordered dataTable no-footer" id="user-table">
+        <table class="table table-striped table-bordered dataTable no-footer" id="order-table">
             <thead>
-            <th>用户名</th>
-            <th>昵称</th>
-            <th>性别</th>
-            <th>生日</th>
-            <th>余额</th>
+            <th>订单详情</th>
+            <th>收货人</th>
+            <th>金额</th>
+            <th>状态</th>
             <th>操作</th>
             </thead>
-            <tbody></tbody>
+            <tbody>
+            <tr class="sep-row"><td colspan="5"></td></tr>
+            <tr class="tr-th">
+                <td colspan="5">
+                    <span class="gap"></span>
+                    <span class="dealtime" title="2018-02-20 09:58:28">2018-02-20 09:58:28</span>
+                    <input type="hidden" id="datasubmit-71476525048" value="2018-02-20 09:58:28">
+                    <span class="number">订单号：71476525048</span>
+                    <div class="tr-operate">
+                        <a href="#none" clstag="click|keycount|orderlist|dingdanshanchu" class="order-del" _orderid="71476525048" _passkey="8AB2CECDB8F94452BB59AADA2FA2D771" title="删除" style="display: none;"></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div></div>
+                </td>
+                <td>xxx</td>
+                <td>89</td>
+                <td>待发货</td>
+                <td><a class='delete-action' title='删除' data-id='" + row.id +"'><i class="fa fa-x fa-trash-o"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr class="sep-row"><td colspan="5"></td></tr>
+            <tr class="tr-th">
+                <td colspan="5">
+                    <span class="gap"></span>
+                    <span class="dealtime" title="2018-02-20 09:58:28">2018-02-20 09:58:28</span>
+                    <input type="hidden" id="datasubmit-71476525048" value="2018-02-20 09:58:28">
+                    <span class="number">订单号：71476525048</span>
+                    <div class="tr-operate">
+                        <a href="#none" clstag="click|keycount|orderlist|dingdanshanchu" class="order-del" _orderid="71476525048" _passkey="8AB2CECDB8F94452BB59AADA2FA2D771" title="删除" style="display: none;"></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div></div>
+                </td>
+                <td>xxx</td>
+                <td>89</td>
+                <td>待发货</td>
+                <td><a class='delete-action' title='删除' data-id='" + row.id +"'><i class="fa fa-x fa-trash-o"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+            </tbody>
         </table>
     </div>
 
-    <!--     bootstrap modal          -->
-    <div class="modal fade" id="inpour-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">用户充值</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="portlet-body">
-                        <form id="inpour-form" class="form-horizontal" role="form">
-                            <input type="hidden" value="" id="user-id"/>
-                            <div class="form-body">
-                                <div class="form-group">
-                                    <%--<div class="col-md-3">--%>
-                                    <label class="col-md-3 control-label">输入充值金额</label>
-                                    <%--</div>--%>
-                                    <div class="col-md-4">
-                                        <input id="user-num" type="text" name="num" class="form-control"
-                                               placeholder="输入充值金额">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" data-click="recharge" class="btn green">充值</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <%--<button type="button" class="btn btn-primary" data-click="comment">评论</button>--%>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <content tag="page_script">
-        <script src="${ctx}/static/back/js/custom/order-manager.js" type="text/javascript"></script>
+        <script src="${ctx}/static/back/js/custom/order/order-manager.js" type="text/javascript"></script>
     </content>
 
 </body>

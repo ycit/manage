@@ -31,8 +31,13 @@ $(function () {
         "data": "brands",
         "orderable": false,
         "render":function (brands) {
-            console.log(_.pluck(brands, "brandName"));
             return _.pluck(brands, "brandName").join(",");
+        }
+    }, {
+        "data": "createTime",
+        "orderable": true,
+        "render":function (createTime) {
+            return moment(createTime).format("YYYY-MM-DD HH:mm:ss");
         }
     }, {
         "data": null,

@@ -117,6 +117,8 @@
 <%--<script src="${ctx}/static/back/global/scripts/app.min.js" type="text/javascript"></script>--%>
 <%--<script src="${ctx}/static/back/js/dateranges.js" type="text/javascript"></script>--%>
 <script src="${ctx}/static/back/js/datatables/datatables.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/assets/global/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/assets/global/plugins/bootstrap/js/tooltip.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/bootstrap-fileinput/js/fileinput.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/bootstrap-fileinput/locales/zh.js" type="text/javascript"></script>

@@ -19,7 +19,7 @@
     <link href="${ctx}/static/back/css/goods-new.css" rel="stylesheet" type="text/css"/>
 </head>
 
-<body id="goods-type">
+<body id="store-manager">
 <div class="page-content" style="min-height:1318px">
     <!-- BEGIN PAGE HEADER-->
     <!-- BEGIN PAGE BAR -->
@@ -89,7 +89,7 @@
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
                             <button data-click="submit" type="button" class="btn green">新增</button>
-                            <a href="${ctx}/back/stores" type="button" class="btn default">返回</a>
+                            <button data-click="back" type="button" class="btn default">返回</button>
                         </div>
                     </div>
                 </div>

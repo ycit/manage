@@ -19,7 +19,7 @@
     <link href="${ctx}/static/back/css/goods-new.css" rel="stylesheet" type="text/css"/>
 </head>
 
-<body id="goods-type">
+<body id="news-manager">
 <div class="page-content" style="min-height:1318px">
     <!-- BEGIN PAGE HEADER-->
     <!-- BEGIN PAGE BAR -->
@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
                             <button data-click="edit" type="button" class="btn green">编辑</button>
-                            <a href="${ctx}/back/newses" type="button" class="btn default">返回</a>
+                            <a data-click="back" type="button" class="btn default">返回</a>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 package com.ycit.service;
 
-import com.ycit.bean.entity.DictForm;
+import com.ycit.bean.criteria.DictForm;
 import com.ycit.bean.modal.dict.Type;
 import com.ycit.mapper.DictTypeMapper;
 import org.springframework.stereotype.Service;

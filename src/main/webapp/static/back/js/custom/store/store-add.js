@@ -130,6 +130,9 @@ $(function () {
                 fileInputSelector.fileinput("upload");
             }
 
+        },
+        back:function () {
+            window.location.href = "/back/stores";
         }
     })
 })

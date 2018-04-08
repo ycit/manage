@@ -1,7 +1,7 @@
 package com.ycit.bean.modal.dict;
 
 import com.ycit.bean.base.Base;
-import com.ycit.bean.entity.DictForm;
+import com.ycit.bean.criteria.DictForm;
 import org.springframework.beans.BeanUtils;
 
 /**

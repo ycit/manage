@@ -1,6 +1,6 @@
 package com.ycit.mapper;
 
-import com.ycit.bean.entity.GoodsSearchForm;
+import com.ycit.bean.criteria.GoodsSearchForm;
 import com.ycit.bean.modal.Goods;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;

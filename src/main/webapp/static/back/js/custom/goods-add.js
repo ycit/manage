@@ -7,7 +7,7 @@ $(function () {
         rules: {
             name: {
                 required: true,
-                maxlength: 50
+                maxlength: 500
             }, price: {
                 required: true,
                 bigEqualZero: true
@@ -18,16 +18,27 @@ $(function () {
                 maxlength: 800
             }, capacity: {
                 required: true,
-                positiveInteger: true
+                float: true
             }, voltage: {
                 required: true,
                 positiveInteger: true
+            }, model: {
+                required: true
+            }, length: {
+                required: true,
+                float: true
+            }, width: {
+                required: true,
+                float: true
+            }, height: {
+                required: true,
+                float: true
             }
         },
         message: {
             name: {
                 required: "名称不能为空",
-                maxlength: "最大长度不能超过50"
+                maxlength: "最大长度不能超过500"
             }, price: {
                 required: "价格不能为空",
                 positiveInteger: "价格必须为正整数"
@@ -78,7 +89,7 @@ $(function () {
         window.location.href = "/back/goods";
     }).on('filebatchuploadcomplete', function (event, files, extra) {
         console.log('File batch upload complete');
-        window.location.href = "/back/goods";
+        window.location.href = "/back/goods";osition
     }).on('filebatchuploaderror', function (event, data, msg) {
         var form = data.form, files = data.files, extra = data.extra,
             response = data.response, reader = data.reader;
@@ -112,12 +123,29 @@ $(function () {
                 console.log("success");
             })
         },
-        test: function () {
-            var imgCount = formSelector.fileinput('getFilesCount');
-            fileInputSelector.fileinput("upload");
-            console.log(imgCount);
+        back: function () {
+            window.location.href = "/back/goods";
         }
     });
 
+    $("#purpose-select").on("change", function () {
+        var val = $(this).find("option:selected").text();
+        $("#purpose-name").attr("value", val);
+    });
+
+    $("#category-select").on("change", function () {
+        var val = $(this).find("option:selected").text();
+        $("#category-name").attr("value", val);
+    });
+
+    $("#store-select").on("change", function () {
+        var val = $(this).find("option:selected").text();
+        $("#store-name").attr("value", val);
+    });
+
+    $("#brand-select").on("change", function () {
+        var val = $(this).find("option:selected").text();
+        $("#brand-name").attr("value", val);
+    });
 
 })

@@ -2,7 +2,7 @@ package com.ycit.controller;
 
 import com.google.common.collect.ImmutableList;
 import com.ycit.bean.base.ApiResponse;
-import com.ycit.bean.entity.GoodsSearchForm;
+import com.ycit.bean.criteria.GoodsSearchForm;
 import com.ycit.bean.modal.Goods;
 import com.ycit.bean.modal.GoodsAlbum;
 import com.ycit.bean.modal.Store;

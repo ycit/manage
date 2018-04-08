@@ -2,7 +2,7 @@ package com.ycit.controller;
 
 import com.google.common.collect.ImmutableList;
 import com.ycit.bean.base.ApiResponse;
-import com.ycit.bean.entity.StoreForm;
+import com.ycit.bean.criteria.StoreForm;
 import com.ycit.bean.modal.Store;
 import com.ycit.service.DictInfoService;
 import com.ycit.service.StoreService;

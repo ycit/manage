@@ -2,34 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ycit.mapper.GoodsMapper">
     <sql id="insert-columns">
-        store_id, brand_id, name, img, thumbnail, price, stock,
-        description, capacity, category, purpose, voltage
-    </sql>
-    <sql id="select-columns">
-        id,store_id, brand_id, name, img, thumbnail, price, sale_count, stock,
-        description, capacity, category, purpose, voltage, create_time, modify_time, status
+        store_id, brand_id, store_name, brand_name, name, img, thumbnail, price, stock,
+        description, capacity, category_id, purpose_id, category_name, purpose_name,
+         voltage, model, length, width, height
     </sql>
     <insert id="insert" parameterType="com.ycit.bean.modal.Goods" useGeneratedKeys="true"
             keyColumn="goods.id" keyProperty="goods.id">
         INSERT INTO goods (
              <include refid="insert-columns" />
-        ) VALUES (#{goods.storeId}, #{goods.brandId}, #{goods.name}, #{goods.img}, #{goods.thumbnail},
-        #{goods.price}, #{goods.stock}, #{goods.description}, #{goods.capacity}, #{goods.category},
-        #{goods.purpose}, #{goods.voltage})
+        ) VALUES (#{goods.storeId}, #{goods.brandId}, #{goods.storeName}, #{goods.brandName}, #{goods.name}, #{goods.img}, #{goods.thumbnail},
+        #{goods.price}, #{goods.stock}, #{goods.description}, #{goods.capacity}, #{goods.categoryId},
+        #{goods.purposeId}, #{goods.categoryName}, #{goods.purposeName}, #{goods.voltage}, #{goods.model},
+        #{goods.length}, #{goods.width}, #{goods.height})
     </insert>
-    <select id="finds" resultType="com.ycit.bean.modal.Goods" parameterType="com.ycit.bean.entity.GoodsSearchForm">
-        SELECT
-        <include refid="select-columns"/>
-        FROM goods
+    <select id="finds" resultType="com.ycit.bean.modal.Goods" parameterType="com.ycit.bean.criteria.GoodsSearchForm">
+        SELECT * FROM goods
         <where>
             <if test="goods.name != null">
                 AND name LIKE CONCAT(CONCAT('%', #{goods.name}),'%')
             </if>
-            <if test="goods.purpose != null">
-                AND purpose = #{goods.purpose}
+            <if test="goods.purposeId != null">
+                AND purpose_id = #{goods.purposeId}
             </if>
-            <if test="goods.category != null">
-                AND category = #{goods.category}
+            <if test="goods.categoryId != null">
+                AND category_id = #{goods.categoryId}
             </if>
             <if test="goods.brandId != null">
                 AND brand_id = #{goods.brandId}
@@ -80,9 +76,11 @@
         </where>
     </select>
     <update id="updateBeanById" parameterType="com.ycit.bean.modal.Goods">
-        UPDATE goods SET store_id = #{goods.storeId},brand_id = #{goods.brandId}, name= #{goods.name},
+        UPDATE goods SET store_id = #{goods.storeId},brand_id = #{goods.brandId},
+        store_name = #{goods.storeName}, brand_name = #{goods.brandName}, name= #{goods.name},
         price = #{goods.price}, stock = #{goods.stock}, description = #{goods.description},
-        capacity = #{goods.capacity}, category = #{goods.category}, purpose = #{goods.purpose},
-        voltage =  #{goods.voltage}, modify_time = sysdate() WHERE id = #{goods.id}
+        capacity = #{goods.capacity}, category_id = #{goods.categoryId}, purpose_id = #{goods.purposeId},
+        category_name = #{goods.categoryName}, purpose_name = #{goods.purposeName}, voltage =  #{goods.voltage},
+        modify_time = sysdate() WHERE id = #{goods.id}
     </update>
 </mapper>

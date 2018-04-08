@@ -1,6 +1,6 @@
 package com.ycit.service;
 
-import com.ycit.bean.entity.GoodsSearchForm;
+import com.ycit.bean.criteria.GoodsSearchForm;
 import com.ycit.bean.modal.Goods;
 import com.ycit.mapper.GoodsMapper;
 import org.springframework.stereotype.Service;

@@ -20,15 +20,43 @@ public class Goods extends Base {
     private int saleCount;
     private int stock;
     private String description;
-    private int capacity; // 电池容量
-    private Integer category; // 电池种类
-    private Integer purpose; // 电池用途
+    private float capacity; // 电池容量
+    private Integer categoryId; // 电池种类
+    private Integer purposeId; // 电池用途
     private int voltage; // 电压
+    private String model; // 型号
+    private float length;
+    private float width;
+    private float height;
 
     private String storeName;
     private String brandName;
     private String purposeName;
     private String categoryName;
+
+    public float getLength() {
+        return length;
+    }
+
+    public void setLength(float length) {
+        this.length = length;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public void setWidth(float width) {
+        this.width = width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
 
     public String getStoreName() {
         return storeName;
@@ -86,20 +114,20 @@ public class Goods extends Base {
         this.brandId = brandId;
     }
 
-    public void setCategory(Integer category) {
-        this.category = category;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public Integer getCategory() {
-        return category;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public Integer getPurpose() {
-        return purpose;
+    public Integer getPurposeId() {
+        return purposeId;
     }
 
-    public void setPurpose(Integer purpose) {
-        this.purpose = purpose;
+    public void setPurposeId(Integer purposeId) {
+        this.purposeId = purposeId;
     }
 
     public String getName() {
@@ -158,11 +186,11 @@ public class Goods extends Base {
         this.description = description;
     }
 
-    public int getCapacity() {
+    public float getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(float capacity) {
         this.capacity = capacity;
     }
 
@@ -172,5 +200,13 @@ public class Goods extends Base {
 
     public void setVoltage(int voltage) {
         this.voltage = voltage;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 }

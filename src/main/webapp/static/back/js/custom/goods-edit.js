@@ -1,6 +1,5 @@
 $(function () {
     var goodsId;
-    console.log(window.goodsId);
     var fileInputSelector = $("#goods-image");
     var formSelector = $("#goods-form");
     // 请求 商品图片
@@ -30,7 +29,7 @@ $(function () {
             initialPreview:imgs,
             initialPreviewAsData:true,
             initialPreviewShowDelete:true,
-            validateInitialCount:true, //是否计算初始化时加载的图片数量
+            validateInitialCount:false, //是否计算初始化时加载的图片数量
             layoutTemplates: {
                 actionUpload: '',//设置为空可去掉上传按钮
                 //actionDelete:'',//设置为空可去掉删除按钮
@@ -49,6 +48,14 @@ $(function () {
         }).on('filebatchuploadcomplete', function (event, files, extra) {
             console.log('File batch upload complete');
             window.location.href = "/back/goods";
+        }).on('change', function(event) {
+            console.log("change");
+        }).on('filereset', function(event) {
+            console.log("filereset");
+        }).on('fileremoved', function(event, id, index) {
+            console.log("fileremoved");
+        }).on('filebeforedelete', function(event, key, data) {
+            console.log("filebeforedelete");
         });
     });
     // 表单校验
@@ -56,7 +63,7 @@ $(function () {
         rules: {
             name: {
                 required: true,
-                maxlength: 50
+                maxlength: 500
             }, price: {
                 required: true,
                 bigEqualZero: true
@@ -67,7 +74,7 @@ $(function () {
                 maxlength: 800
             }, capacity: {
                 required: true,
-                positiveInteger: true
+                float: true
             }, voltage: {
                 required: true,
                 positiveInteger: true
@@ -76,7 +83,7 @@ $(function () {
         message: {
             name: {
                 required: "名称不能为空",
-                maxlength: "最大长度不能超过50"
+                maxlength: "最大长度不能超过500"
             }, price: {
                 required: "价格不能为空",
                 positiveInteger: "价格必须为正整数"
@@ -86,8 +93,7 @@ $(function () {
             }, description: {
                 maxlength: "最大长度不能超过800"
             }, capacity: {
-                required: "容量不能为空",
-                positiveInteger: "容量必须为正整数"
+                required: "容量不能为空"
             }, voltage: {
                 required: "电压不能为空",
                 positiveInteger: "电压必须为正整数"
@@ -101,23 +107,50 @@ $(function () {
             if (!pass) {
                 return;
             }
-            var imgCount = fileInputSelector.fileinput('getFilesCount');
-            if (imgCount < 0 || imgCount > 5) {
-                utils.modal.myAlert("提示", "图片数量请保持在 1-5 张")
+            var imgCount = fileInputSelector.fileinput('getFilesCount'); //不包括初始化的图片的数目
+            var actualCount = $(".file-preview-thumbnails .kv-preview-thumb").length; //包括初始化的图片的数目
+            if (actualCount < 1 || actualCount > 5) {
+                utils.modal.myAlert("提示", "图片数量请保持在 1-5 张");
+                return;
             }
             var params = formSelector.serialize();
             utils.myAjax.post("/back/goods/edit", params, function (data) {
                 if (data.code === 200) {
                     goodsId = data.result[0].id;
-                    fileInputSelector.fileinput("upload");
+                    if(imgCount > 0) {
+                        fileInputSelector.fileinput("upload");
+                    } else {
+                        window.location.href = "/back/goods";
+                    }
                 } else {
                     var msg = data.message;
                     utils.modal.myAlert("提示", msg);
                 }
-                console.log(data.code);
-                console.log("success");
             })
+        },
+        back: function () {
+            window.location.href = "/back/goods";
         }
+    });
+
+    $("#purpose-select").on("change", function () {
+        var val = $(this).find("option:selected").text();
+        $("#purpose-name").attr("value", val);
+    });
+
+    $("#category-select").on("change", function () {
+        var val = $(this).find("option:selected").text();
+        $("#category-name").attr("value", val);
+    });
+
+    $("#store-select").on("change", function () {
+        var val = $(this).find("option:selected").text();
+        $("#store-name").attr("value", val);
+    });
+
+    $("#brand-select").on("change", function () {
+        var val = $(this).find("option:selected").text();
+        $("#brand-name").attr("value", val);
     });
 
 

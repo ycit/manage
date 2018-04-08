@@ -89,7 +89,7 @@ var resolveModal = function () {//解析调用时的参数，并返回
 };
 var myAlert = {
     id: null,
-    template: '<div class="modal fade" id="{id}" role="dialog" aria-hidden="true" style="background-color: inherit"><div class="modal-dialog" style="width: 360px;"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title"></h4></div><div class="modal-body" style="font-size:16px;"></div><div class="modal-footer"><button type="button" class="btn btn-primary">确定</button></div></div></div></div>',
+    template: '<div class="modal fade" id="{id}" role="dialog" aria-hidden="true"><div class="modal-dialog" style="width: 360px;"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h4 class="modal-title"></h4></div><div class="modal-body" style="font-size:16px;"></div><div class="modal-footer"><button type="button" class="btn btn-primary">确定</button></div></div></div></div>',
     settings: {
         title: '消息提示',
         body: '消息提示'

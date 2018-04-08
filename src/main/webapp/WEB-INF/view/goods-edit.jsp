@@ -24,7 +24,7 @@
     </script>
 </head>
 
-<body id="goods-type">
+<body id="goods-manager">
 <div class="page-content" style="min-height:1318px">
     <!-- BEGIN PAGE HEADER-->
     <!-- BEGIN PAGE BAR -->
@@ -58,8 +58,9 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">所属品牌</label>
+                        <input id="brand-name" type="hidden" value="${goods.brandName}" name="brandName">
                         <div class="col-md-9">
-                            <select class="form-control" name="brandId">
+                            <select id="brand-select" class="form-control" name="brandId">
                                 <c:if test="${brands != null && brands.size() > 0}">
                                     <c:forEach items="${brands}" var="brand">
                                         <option value="${brand.id}" <c:if test="${goods.brandId==brand.id}">selected</c:if>>${brand.name}</option>
@@ -73,8 +74,9 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">所属专卖店</label>
+                        <input id="store-name" type="hidden" value="${goods.storeName}" name="storeName">
                         <div class="col-md-9">
-                            <select class="form-control" name="storeId">
+                            <select id="store-select" class="form-control" name="storeId">
                                 <c:if test="${stores != null && stores.size() > 0}">
                                     <c:forEach items="${stores}" var="store">
                                         <option value="${store.id}" <c:if test="${goods.storeId==store.id}">selected</c:if>>${store.name}</option>
@@ -112,11 +114,12 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">种类</label>
+                        <input id="category-name" type="hidden" value="${goods.categoryName}" name="categoryName">
                         <div class="col-md-9">
-                            <select class="form-control" name="category">
+                            <select id="category-select" class="form-control" name="categoryId">
                                 <c:if test="${categories != null && categories.size() > 0}">
                                     <c:forEach items="${categories}" var="category">
-                                        <option value="${category.id}" <c:if test="${goods.category==category.id}">selected</c:if>>${category.name}</option>
+                                        <option value="${category.id}" <c:if test="${goods.categoryId==category.id}">selected</c:if>>${category.name}</option>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${categories == null || categories.size() == 0}">
@@ -126,12 +129,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">用途</label>
+                        <label class="col-md-3 control-label">适用车型</label>
+                        <input id="purpose-name" type="hidden" value="${goods.purposeName}" name="purposeName">
                         <div class="col-md-9">
-                            <select class="form-control" name="purpose">
+                            <select id="purpose-select" class="form-control" name="purposeId">
                                 <c:if test="${usages != null && usages.size() > 0}">
                                     <c:forEach items="${usages}" var="usage">
-                                        <option value="${usage.id}" <c:if test="${goods.purpose==usage.id}">selected</c:if>>${usage.name}</option>
+                                        <option value="${usage.id}" <c:if test="${goods.purposeId==usage.id}">selected</c:if>>${usage.name}</option>
                                     </c:forEach>
                                 </c:if>
                                 <c:if test="${usages == null || usages.size() == 0}">
@@ -157,7 +161,7 @@
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
                             <button data-click="edit" type="button" class="btn green">修改</button>
-                            <a href="${ctx}/back/goods" type="button" class="btn default">返回</a>
+                            <a data-click="back" type="button" class="btn default">返回</a>
                         </div>
                     </div>
                 </div>

@@ -74,6 +74,9 @@ $(function () {
                     utils.modal.myAlert("提示", data.message);
                 }
             });
+        },
+        back:function () {
+            window.location.href = "/back/newses";
         }
     });
 

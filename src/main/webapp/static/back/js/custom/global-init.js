@@ -45,4 +45,9 @@ $(function () {
         var reg = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/
         return this.optional(element) || reg.test(value);
     }, "号码不合法(固定号码形式:xxx-xxxxx;手机号码为11位)");
+
+    jQuery.validator.addMethod("float", function(value, element) {
+        var reg = /^[1-9]\d*\.*\d*|0\.\d*[1-9]\d*$/
+        return this.optional(element) || reg.test(value);
+    }, "必须输入正浮点数");
 })

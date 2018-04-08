@@ -1,7 +1,7 @@
 package com.ycit.bean.modal;
 
 import com.ycit.bean.base.Base;
-import com.ycit.bean.entity.StoreForm;
+import com.ycit.bean.criteria.StoreForm;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.ycit.controller;
 
-import com.ycit.bean.entity.LoginForm;
+import com.ycit.bean.criteria.LoginForm;
 import com.ycit.service.AdminService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;

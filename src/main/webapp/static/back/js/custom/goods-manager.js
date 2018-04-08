@@ -11,7 +11,14 @@ $(function () {
         }
     }, {
         "data": "name",
-        "orderable": false
+        "orderable": false,
+        "render": function (name) {
+            if(name.length > 10) {
+                return  "<a  data-toggle=\"tooltip\" data-placement=\"right\" title='" +  name + "'>" + name.substr(0, 10) + "...</a>";
+            } else {
+                return name;
+            }
+        }
     }, {
         "data": "brand",
         "orderable": false,
@@ -129,5 +136,6 @@ function search(params, table, columns) {
                 }
             }
         });
+        $('[data-toggle="tooltip"]').tooltip();
     });
 }

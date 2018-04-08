@@ -1,7 +1,7 @@
 package com.ycit.service;
 
 import com.ycit.YcitException;
-import com.ycit.bean.entity.StoreForm;
+import com.ycit.bean.criteria.StoreForm;
 import com.ycit.bean.modal.Store;
 import com.ycit.bean.modal.StoreBrand;
 import com.ycit.bean.modal.dict.Info;

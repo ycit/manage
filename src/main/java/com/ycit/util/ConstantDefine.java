@@ -9,7 +9,6 @@ package com.ycit.util;
 public class ConstantDefine {
 
     public static final int DICT_BRAND_ID = 1;
-    public static final int DICT_STORE_ID = 2;
 
     public static final int DICT_CATEGORY_ID = 9;
     public static final int DICT_USAGE_ID = 10;
@@ -30,8 +29,8 @@ public class ConstantDefine {
     public static final int STORE_IMG_HEIGHT = 100;
     public static final int STORE_IMG_WIDTH = 200;
 
-    public static final int NEWS_IMG_HEIGHT = 100;
-    public static final int NEWS_IMG_WIDTH = 200;
+    public static final int NEWS_IMG_HEIGHT = 400;
+    public static final int NEWS_IMG_WIDTH = 640;
 
 
 }

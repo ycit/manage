@@ -16,7 +16,7 @@
 <head>
     <title>最新资讯管理</title>
     <meta charset="utf-8">
-    <link href="${ctx}/static/back/css/store-manager.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/css/news-manager.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body id="news-manager">
@@ -40,7 +40,7 @@
                 <thead>
                 <th>图片</th>
                 <th>链接</th>
-                <th>修改时间</th>
+                <th>创建时间</th>
                 <th>操作</th>
                 </thead>
                 <tbody></tbody>

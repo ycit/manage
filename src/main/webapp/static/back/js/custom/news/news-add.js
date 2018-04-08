@@ -68,6 +68,9 @@ $(function () {
                     }
                 });
             }
+        },
+        back:function () {
+            window.location.href = "/back/newses";
         }
     })
 })

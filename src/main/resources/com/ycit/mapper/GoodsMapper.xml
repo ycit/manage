@@ -74,6 +74,7 @@
                 ]]>
             </if>
         </where>
+        order by create_time desc
     </select>
     <update id="updateBeanById" parameterType="com.ycit.bean.modal.Goods">
         UPDATE goods SET store_id = #{goods.storeId},brand_id = #{goods.brandId},

@@ -43,7 +43,7 @@ $(function () {
         }
     }];
     // 请求 用户数据
-    utils.myAjax.post("/back/stores",{},function (data) {
+    utils.myAjax.post("/back/users",{},function (data) {
         table = $("#user-table").DataTable({
             data:data,
             columns:columns,

@@ -43,7 +43,7 @@
                 <th>字典表名称</th>
                 <th>备注</th>
                 <th>创建时间</th>
-                <th>操作</th>
+                <%--<th>操作</th>--%>
                 </thead>
                 <tbody></tbody>
             </table>

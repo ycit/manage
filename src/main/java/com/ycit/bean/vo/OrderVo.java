@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class OrderVo extends Order{
 
-    private List<OrderGoods> goods;
+    private List<OrderGoods> goodsList;
 
     public static OrderVo fromBean(Order order) {
         OrderVo orderVo = new OrderVo();
@@ -22,11 +22,11 @@ public class OrderVo extends Order{
         return orderVo;
     }
 
-    public List<OrderGoods> getGoods() {
-        return goods;
+    public List<OrderGoods> getGoodsList() {
+        return goodsList;
     }
 
-    public void setGoods(List<OrderGoods> goods) {
-        this.goods = goods;
+    public void setGoodsList(List<OrderGoods> goodsList) {
+        this.goodsList = goodsList;
     }
 }

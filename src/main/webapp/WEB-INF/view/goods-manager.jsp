@@ -57,8 +57,8 @@
                             <label>所属专卖店: </label>
                             <select id="goods-store" class="form-control input-small" name="storeId">
                                 <c:if test="${stores != null && stores.size() > 0}">
+                                    <option value="">全部</option>
                                     <c:forEach items="${stores}" var="store">
-                                        <option value="">全部</option>
                                         <option value="${store.id}">${store.name}</option>
                                     </c:forEach>
                                 </c:if>
@@ -71,7 +71,7 @@
                     <div class="col-md-4">
                         <div class="row">
                             <label>用途: </label>
-                            <select id="goods-purpose" class="form-control input-small" name="purpose">
+                            <select id="goods-purpose" class="form-control input-small" name="purposeId">
                                 <c:if test="${usages != null && usages.size() > 0}">
                                     <option value="">全部</option>
                                     <c:forEach items="${usages}" var="usage">
@@ -99,7 +99,7 @@
                     <div class="col-md-4">
                         <div class="row">
                             <label>种类: </label>
-                            <select id="goods-category" class="form-control input-small" name="category">
+                            <select id="goods-category" class="form-control input-small" name="categoryId">
                                 <c:if test="${categories != null && categories.size() > 0}">
                                     <option value="">全部</option>
                                     <c:forEach items="${categories}" var="category">
@@ -114,13 +114,9 @@
                         <div class="row">
                             <label>电压: </label>
                             <input id="goods-min-voltage" name="minVoltage" class="form-control-custom input-xsmall" type="text"/>
-                            -
+                            <span>-</span>
                             <input id="goods-max-voltage" name="maxVoltage" class="form-control-custom input-xsmall" type="text"/>
                         </div>
-                        <%--<div class="row">--%>
-                            <%--<label>销量: </label>--%>
-                            <%--<input class="form-control input-small" type="text"/>--%>
-                        <%--</div>--%>
                     </div>
                 </div>
                 <div class="form-actions">
@@ -151,43 +147,6 @@
                     </thead>
                     <tbody></tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-    <!--     bootstrap modal          -->
-    <div class="modal fade" id="inpour-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">用户充值</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="portlet-body">
-                        <form id="inpour-form" class="form-horizontal" role="form">
-                            <input type="hidden" value="" id="user-id"/>
-                            <div class="form-body">
-                                <div class="form-group">
-                                    <%--<div class="col-md-3">--%>
-                                    <label class="col-md-3 control-label">输入充值金额</label>
-                                    <%--</div>--%>
-                                    <div class="col-md-4">
-                                        <input id="user-num" type="text" name="num" class="form-control"
-                                               placeholder="输入充值金额">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" data-click="recharge" class="btn green">充值</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <%--<button type="button" class="btn btn-primary" data-click="comment">评论</button>--%>
-                </div>
             </div>
         </div>
     </div>

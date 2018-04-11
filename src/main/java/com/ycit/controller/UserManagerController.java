@@ -24,30 +24,53 @@ public class UserManagerController {
 
     private UserService userService;
 
+    /**
+     * setter 方法 注入 spring 管理的 service 层
+     */
     @Resource
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
+    /**
+     * 用户管理页面，返回用户jsp页面，spring mvc viewer 处理
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String home(Model model) {
         return "/user-manager";
     }
 
+    /**
+     * 查询用户数据请求
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public List<User> users() {
        return userService.finds();
     }
 
+    /**
+     * 用户金额充值请求
+     * @param num 充值额度
+     * @param id 用户id
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/users/inpour", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public int inpour(@RequestParam("num")int num, @RequestParam("id")int id) {
-        int size = userService.updateBalance(id, num);
+        userService.updateBalance(id, num);
         User user = userService.findById(id);
         return user.getBalance();
     }
 
+    /**
+     * 删除用户请求
+     * @param id 用户 id
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/users/delete", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public int delete(@RequestParam("id")int id) {

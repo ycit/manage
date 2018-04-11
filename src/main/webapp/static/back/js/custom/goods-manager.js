@@ -14,7 +14,7 @@ $(function () {
         "orderable": false,
         "render": function (name) {
             if(name.length > 10) {
-                return  "<a  data-toggle=\"tooltip\" data-placement=\"right\" title='" +  name + "'>" + name.substr(0, 10) + "...</a>";
+                return  "<label  data-toggle=\"tooltip\" data-placement=\"right\" title='" +  name + "'>" + name.substr(0, 10) + "...</label>";
             } else {
                 return name;
             }

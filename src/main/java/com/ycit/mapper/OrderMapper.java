@@ -14,10 +14,10 @@ public interface OrderMapper {
 
     List<Order> finds(@Param("searchForm")OrderSearchForm searchForm);
 
-    @Update("update order set status = #{status},send_time = sysdate() where id = #{id}")
+    @Update("update orders set status = #{status},send_time = sysdate() where id = #{id}")
     int updateStatusById(@Param("id")int id, @Param("status")int status);
 
-    @Delete("delete from order where id = #{id}")
+    @Delete("delete from orders where id = #{id}")
     int deleteById(@Param("id")int id);
 
 }

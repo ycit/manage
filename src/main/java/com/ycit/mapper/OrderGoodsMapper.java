@@ -11,10 +11,10 @@ import java.util.List;
 @Repository
 public interface OrderGoodsMapper {
 
-    @Select("select * from order_goods where order_id = #{orderId}")
+    @Select("select * from orders_goods where order_id = #{orderId}")
     List<OrderGoods> findByOrderId(@Param("orderId")int orderId);
 
-    @Delete("delete from order_goods where order_id = #{orderId}")
+    @Delete("delete from orders_goods where order_id = #{orderId}")
     int deleteByOrderId(@Param("orderId")int orderId);
 
 }

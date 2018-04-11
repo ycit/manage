@@ -22,14 +22,16 @@ $(function () {
         "render":function (createTime) {
             return moment(createTime).format("YYYY-M-D H:m:s");
         }
-    },{
-        "data": null,
-        "orderable": false,
-        "render":function (data, type, row, meta) {
-            return "<a href='/back/dict/add?id=" + row.id + "' class='edit-action' title='编辑' data-id='" + row.id +"'><i class=\"fa fa-x fa-pencil\"></i></a>&nbsp;&nbsp;&nbsp;" +
-                "<a class='delete-action' title='删除' data-id='" + row.id +"'><i class=\"fa fa-x fa-trash-o\"></i></a> &nbsp;&nbsp;&nbsp;";
-        }
-    }];
+    }
+    // ,{
+    //     "data": null,
+    //     "orderable": false,
+    //     "render":function (data, type, row, meta) {
+    //         return "<a href='/back/dict/add?id=" + row.id + "' class='edit-action' title='编辑' data-id='" + row.id +"'><i class=\"fa fa-x fa-pencil\"></i></a>&nbsp;&nbsp;&nbsp;" +
+    //             "<a class='delete-action' title='删除' data-id='" + row.id +"'><i class=\"fa fa-x fa-trash-o\"></i></a> &nbsp;&nbsp;&nbsp;";
+    //     }
+    // }
+    ];
     // 请求 字典表数据
     utils.myAjax.get("/back/dict/all",{},function (data) {
         table = $("#dict-table").DataTable({

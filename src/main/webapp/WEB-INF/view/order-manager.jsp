@@ -30,63 +30,109 @@
     <%--</div>--%>
     <!-- END PAGE BAR -->
     <!-- END PAGE HEADER-->
-    <div class="portlet-body">
-        <table class="table table-striped table-bordered dataTable no-footer" id="order-table">
+    <div class="portlet">
+        <div class="portlet-title">
+            <div class="row">
+                <div class="col-md-4">
+                    <select id="user-id" class="bs-select form-control" data-width="125px">
+                        <option value="">全部</option>
+                        <c:forEach items="${users}" var="user">
+                            <option value="${user.id}">${user.username}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-inline input-medium">
+                        <div class="input-group report-range" id="dateRange">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn default date-range-toggle" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <%--<input type="text" id="dateRange" class="form-control">--%>
+                    <%--<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>--%>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+        <div class="portlet-body results">
+
+        </div>
+    </div>
+
+    <div style="text-align: center">
+        <ul id="orders-pages" class="pagination-goods"></ul>
+    </div>
+
+    <script type="text/html" id="orders-list">
+        {{#if orders}}
+        <table class="table table-bordered no-footer" id="order-table">
             <thead>
-            <th>订单详情</th>
+            <th colspan="3" style="text-align: center">订单详情</th>
             <th>收货人</th>
-            <th>金额</th>
+            <th>总金额</th>
             <th>状态</th>
             <th>操作</th>
             </thead>
+            {{#each orders}}
             <tbody>
-            <tr class="sep-row"><td colspan="5"></td></tr>
+            <input type="hidden" class="order-id" value="{{id}}"/>
+            <tr class="sep-row">
+                <td colspan="7"></td>
+            </tr>
             <tr class="tr-th">
-                <td colspan="5">
+                <td colspan="7">
                     <span class="gap"></span>
-                    <span class="dealtime" title="2018-02-20 09:58:28">2018-02-20 09:58:28</span>
-                    <input type="hidden" id="datasubmit-71476525048" value="2018-02-20 09:58:28">
-                    <span class="number">订单号：71476525048</span>
-                    <div class="tr-operate">
-                        <a href="#none" clstag="click|keycount|orderlist|dingdanshanchu" class="order-del" _orderid="71476525048" _passkey="8AB2CECDB8F94452BB59AADA2FA2D771" title="删除" style="display: none;"></a>
-                    </div>
+                    <span class="dealtime" title="2018-02-20 09:58:28">{{#time createTime}}{{/time}}</span>
+                    <input type="hidden" value="2018-02-20 09:58:28">
+                    <span class="number">订单号：{{code}}</span>
                 </td>
             </tr>
+            {{#each goodsList}}
             <tr>
+                <input type="hidden" class="order-goods-id" value="{{id}}"/>
                 <td>
-                    <div></div>
+                    <img class="" src="{{goodsImg}}" title="{{goodsName}}" width="60" height="60">
                 </td>
-                <td>xxx</td>
-                <td>89</td>
-                <td>待发货</td>
-                <td><a class='delete-action' title='删除' data-id='" + row.id +"'><i class="fa fa-x fa-trash-o"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            </tr>
-            </tbody>
-            <tbody>
-            <tr class="sep-row"><td colspan="5"></td></tr>
-            <tr class="tr-th">
-                <td colspan="5">
-                    <span class="gap"></span>
-                    <span class="dealtime" title="2018-02-20 09:58:28">2018-02-20 09:58:28</span>
-                    <input type="hidden" id="datasubmit-71476525048" value="2018-02-20 09:58:28">
-                    <span class="number">订单号：71476525048</span>
-                    <div class="tr-operate">
-                        <a href="#none" clstag="click|keycount|orderlist|dingdanshanchu" class="order-del" _orderid="71476525048" _passkey="8AB2CECDB8F94452BB59AADA2FA2D771" title="删除" style="display: none;"></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td>
-                    <div></div>
+                    <div data-toggle="tooltip" data-placement="top" title="{{goodsName}}">{{omitName}}</div>
                 </td>
-                <td>xxx</td>
-                <td>89</td>
-                <td>待发货</td>
-                <td><a class='delete-action' title='删除' data-id='" + row.id +"'><i class="fa fa-x fa-trash-o"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>x{{goodsNum}}</td>
+                <td>{{../receiveName}}</td>
+                {{#compare @index '==' 0}}
+                <td rowspan="{{../goodsSize}}" style="vertical-align: middle">¥{{../price}}</td>
+                {{/compare}}
+                {{#compare @index '==' 0}}
+                <td class="order-status" rowspan="{{../goodsSize}}" style="vertical-align: middle">{{#compare ../status
+                    '==' 0}}待发货{{/compare}}{{#compare ../status '==' 1}}待签收{{/compare}}{{#compare ../status '=='
+                    2}}已完成{{/compare}}
+                </td>
+                {{/compare}}
+                {{#compare @index '==' 0}}
+                <td rowspan="{{../goodsSize}}" style="vertical-align: middle">
+                    <a class="send-action {{#compare ../status '!=' 0}}hide{{/compare}}" title="发货" data-id="{{id}}">
+                        <i class="fa-x fa fa-truck"></i>
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="delete-action" title="删除" data-id="{{id}}">
+                        <i class="fa fa-x fa-trash-o"></i>
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                {{/compare}}
             </tr>
+            {{/each}}
             </tbody>
+            {{/each}}
         </table>
-    </div>
+        {{else}}
+        <div class='not-found'></div>
+        <div style='text-align: center'><strong>暂无订单信息</strong></div>
+        {{/if}}
+    </script>
 
     <content tag="page_script">
         <script src="${ctx}/static/back/js/custom/order/order-manager.js" type="text/javascript"></script>

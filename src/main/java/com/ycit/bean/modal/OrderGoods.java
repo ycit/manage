@@ -12,12 +12,14 @@ public class OrderGoods {
 
     private int id;
     private int orderId;
+    private String orderCode;
     private int goodsId;
     private int goodsNum;
     private int goodsPrice;
     private String goodsName;
     private String goodsImg;
     private Date createTime;
+    private int status;
 
     public int getId() {
         return id;
@@ -33,6 +35,14 @@ public class OrderGoods {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    public String getOrderCode() {
+        return orderCode;
+    }
+
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
     }
 
     public int getGoodsId() {
@@ -81,5 +91,13 @@ public class OrderGoods {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

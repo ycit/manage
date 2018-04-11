@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -74,7 +73,7 @@ public class GoodsManagerController extends BaseController<Goods> {
     }
 
     /**
-     * 商品管理入口
+     * 商品管理页面
      * @param model
      * @return
      */
@@ -93,19 +92,18 @@ public class GoodsManagerController extends BaseController<Goods> {
 
     /**
      * 请求 商品数据
-     * @param searchForm
-     * @param image
+     * @param searchForm 查询参数表单
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/goods", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-    public List<GoodsVo> finds(GoodsSearchForm searchForm, MultipartFile image) {
+    public List<GoodsVo> finds(GoodsSearchForm searchForm) {
         List<Goods> goods =  goodsService.finds(searchForm);
         return goodsVoBuilder.buildList(goods);
     }
 
     /**
-     *  新增 商品入口
+     *  新增 商品页面
      * @param model
      * @return
      */
@@ -152,6 +150,12 @@ public class GoodsManagerController extends BaseController<Goods> {
         return goodsService.deleteById(id);
     }
 
+    /**
+     * 跳转编辑商品页面
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/goods/edit", method = RequestMethod.GET)
     public String editHome(@RequestParam("id")int id, Model model) {
         List<Info> brands = dictInfoService.findBrands();
@@ -169,6 +173,12 @@ public class GoodsManagerController extends BaseController<Goods> {
         return "goods-edit";
     }
 
+    /**
+     * 发起编辑商品请求
+     * @param goods 编辑数据
+     * @param result
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/goods/edit", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public ApiResponse<Goods> edit(@Valid Goods goods, BindingResult result) {

@@ -29,7 +29,7 @@ public class OrderVoBuilder {
     public OrderVo build(Order order) {
         OrderVo orderVo = OrderVo.fromBean(order);
         List<OrderGoods> orderGoods = orderGoodsService.findByOrderId(order.getId());
-        orderVo.setGoods(orderGoods);
+        orderVo.setGoodsList(orderGoods);
         return orderVo;
     }
 

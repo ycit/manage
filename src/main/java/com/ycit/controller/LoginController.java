@@ -37,11 +37,21 @@ public class LoginController {
         this.adminService = adminService;
     }
 
+    /**
+     * 登录页面
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginHome() {
         return "/login";
     }
 
+    /**
+     * 发起登录请求，form表单提交 为 post
+     * @param loginForm 表单数据
+     * @param result 数据是否合法验证
+     * @return 返回登录结果
+     */
     @ResponseBody
     @PostMapping(value = "/login", produces = "application/json;charset=utf-8")
     public String login(@Valid LoginForm loginForm, BindingResult result) {
@@ -66,12 +76,17 @@ public class LoginController {
         return "success";
     }
 
+    /**
+     * 登出请求，shiro 移除 session 跳转到登录页面
+     * @return
+     */
     @RequestMapping("/logout")
-    public void logout() {
+    public String logout() {
         Subject currentUser = SecurityUtils.getSubject();
         if (currentUser.isAuthenticated()) {
             currentUser.logout();
         }
+        return "redirect:/back/login";
     }
 
 }

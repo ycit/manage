@@ -1,5 +1,7 @@
 package com.ycit.bean.criteria;
 
+import java.util.Date;
+
 /**
  * 订单查询表单
  *
@@ -8,33 +10,51 @@ package com.ycit.bean.criteria;
  */
 public class OrderSearchForm {
 
-    private long startTime;
-    private long endTime;
+    private Long startTime;
+    private Long endTime;
     private Integer status; //订单状态
     private String goodsName;
-    private String username;
+    private Integer userId;
+    private Date start;
+    private Date end;
 
-    public String getUsername() {
-        return username;
+    public Date getStart() {
+        return start;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setStart(Date start) {
+        this.start = start;
     }
 
-    public long getStartTime() {
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(long startTime) {
+    public void setStartTime(Long startTime) {
         this.startTime = startTime;
     }
 
-    public long getEndTime() {
+    public Long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(long endTime) {
+    public void setEndTime(Long endTime) {
         this.endTime = endTime;
     }
 

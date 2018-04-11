@@ -27,6 +27,44 @@ $(function () {
     //         }
     //     }
     // });
+
+    Handlebars.registerHelper("time", function(value) {
+        if (typeof value !== "number") {
+            return "";
+        }
+        return moment(value).format('YYYY-MM-DD HH:mm');
+    });
+
+    Handlebars.registerHelper("compare",function (left, operator, right, options) {
+        if (arguments.length < 3) {
+            throw new Error('Handlerbars Helper "compare" needs 2 parameters');
+        }
+        var operators = {
+            '==':     function(l, r) {return l == r; },
+            '===':    function(l, r) {return l === r; },
+            '!=':     function(l, r) {return l != r; },
+            '!==':    function(l, r) {return l !== r; },
+            '<':      function(l, r) {return l < r; },
+            '>':      function(l, r) {return l > r; },
+            '<=':     function(l, r) {return l <= r; },
+            '>=':     function(l, r) {return l >= r; },
+            'typeof': function(l, r) {return typeof l == r; }
+        };
+
+        if (!operators[operator]) {
+            throw new Error('Handlerbars Helper "compare" doesn\'t know the operator ' + operator);
+        }
+
+        var result = operators[operator](left, right);
+
+        if (result) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+
+    });
+
     jQuery.validator.addMethod("positiveInteger", function(value, element) {
         var reg = /^[1-9]\d*$/;
         return this.optional(element) || reg.test(value);
@@ -38,8 +76,8 @@ $(function () {
     }, "必须输入正整数 或者 0");
 
     jQuery.validator.addMethod("between", function(value, element) {
-        return this.optional(element) ||  value > 0 & value < 10000;
-    }, "充值金额不得高于10000");
+        return this.optional(element) ||  value > 0 & value < 100000;
+    }, "充值金额不得高于100000");
 
     jQuery.validator.addMethod("telephone", function(value, element) {
         var reg = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/

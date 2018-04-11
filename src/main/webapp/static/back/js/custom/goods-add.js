@@ -66,8 +66,8 @@ $(function () {
         showRemove: false,
 //				 showCancel:false,
         browseIcon: '<i class="glyphicon glyphicon-upload"></i>&nbsp;',
-        maxFileCount: 5, //表示允许同时上传的最大文件个数
-        autoReplace: false,
+        maxFileCount: 1, //表示允许同时上传的最大文件个数
+        autoReplace: true,
         allowedFileExtensions: ['jpg', 'png', 'bmp', 'jpeg'],//接收的文件后缀
         enctype: 'multipart/form-data',
         dropZoneEnabled: false,//是否显示拖拽区域
@@ -86,7 +86,7 @@ $(function () {
     })
         .on('fileuploaded', function (event, data, previewId, index) {
         console.log("fileloaded");
-        window.location.href = "/back/goods";
+        // window.location.href = "/back/goods";
     }).on('filebatchuploadcomplete', function (event, files, extra) {
         console.log('File batch upload complete');
         window.location.href = "/back/goods";osition

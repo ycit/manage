@@ -11,13 +11,11 @@ import java.util.Date;
 public class Order {
 
     private int id;
-    private int userId;
     private String code;
+    private int userId;
+    private int addressId;
     private int status;
-    private int pay; //是否支付
-    private String username;
-    private String userAddress;
-    private String userTel;
+    private String receiveName;
     private int price;
     private Date createTime;
     private Date sendTime;
@@ -31,6 +29,14 @@ public class Order {
         this.id = id;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -39,12 +45,12 @@ public class Order {
         this.userId = userId;
     }
 
-    public String getCode() {
-        return code;
+    public int getAddressId() {
+        return addressId;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     public int getStatus() {
@@ -55,36 +61,12 @@ public class Order {
         this.status = status;
     }
 
-    public int getPay() {
-        return pay;
+    public String getReceiveName() {
+        return receiveName;
     }
 
-    public void setPay(int pay) {
-        this.pay = pay;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUserAddress() {
-        return userAddress;
-    }
-
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
-    }
-
-    public String getUserTel() {
-        return userTel;
-    }
-
-    public void setUserTel(String userTel) {
-        this.userTel = userTel;
+    public void setReceiveName(String receiveName) {
+        this.receiveName = receiveName;
     }
 
     public int getPrice() {
@@ -118,5 +100,4 @@ public class Order {
     public void setReceiveTime(Date receiveTime) {
         this.receiveTime = receiveTime;
     }
-
 }

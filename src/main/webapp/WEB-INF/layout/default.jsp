@@ -21,28 +21,27 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <link type="image/x-icon" href="${ctx}/static/back/img/favicon.ico" rel="shortcut icon">
 
+    <link type="image/x-icon" href="${ctx}/static/back/img/favicon.ico" rel="shortcut icon">
     <link href="${ctx}/static/back/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="${ctx}/static/back/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet"
-          type="text/css"/>
+    <link href="${ctx}/static/back/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+
     <link href="${ctx}/static/back/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-          type="text/css"/>
-    <link href="${ctx}/static/back/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="${ctx}/static/back/assets/global/css/components.min.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/assets/layouts/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/js/slider/unslider.css" rel="stylesheet" type="text/css"/>
+
     <link href="${ctx}/static/back/assets/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css">
     <link href="${ctx}/static/back/assets/global/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css">
-    <link href="${ctx}/static/back/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
-    <link href="${ctx}/static/back/assets/layouts/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
-    <link href="${ctx}/static/back/js/slider/unslider.css" rel="stylesheet" type="text/css"/>
-    <%--<link href="${ctx}/static/back/js/datatables/datatables.css" rel="stylesheet" type="text/css"/>--%>
     <link href="${ctx}/static/back/js/datatables/DataTables-1.10.16/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/static/back/js/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" type="text/css"/>
-    <%--<link href="${ctx}/static/back/js/datatables/DataTables-1.10.16/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>--%>
-    <%--<link href="${ctx}/static/back/js/slider/reset.css" rel="stylesheet" type="text/css"/>--%>
-    <%--<link href="${ctx}/static/back/js/site/site.css" rel="stylesheet" type="text/css"/>--%>
-    <link href="${ctx}/static/back/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="${ctx}/static/back/js/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/static/back/js/city-picker/css/city-picker.css" rel="stylesheet" type="text/css"/>
+
+    <link href="${ctx}/static/back/css/custom.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/static/back/css/back-common.css" rel="stylesheet" type="text/css"/>
+    
     <script src="${ctx}/static/back/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="${ctx}/static/back/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <sitemesh:head />
@@ -61,8 +60,8 @@
         <div class="site-title">电池在线销售平台后台管理</div>
         <!-- END LOGO -->
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-        <div class="top-menu">
+        <%--<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>--%>
+        <div class="action pull-right">
             <ul class="nav navbar-nav pull-right">
 
                 <%@include file="/WEB-INF/layout/navigation.jsp"%>
@@ -107,34 +106,30 @@
 <![endif]-->
 <!-- BEGIN CORE PLUGINS -->
 <%--<script src="${ctx}/static/back/global/plugins/js.cookie.min.js" type="text/javascript"></script>--%>
-<%--<script src="${ctx}/static/back/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>--%>
 <%--<script src="${ctx}/static/back/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>--%>
 <%--<script src="${ctx}/static/back/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>--%>
 <%--<script src="${ctx}/static/back/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>--%>
 <script src="${ctx}/static/back/js/momentjs/moment.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
-<%--<script src="${ctx}/static/back/global/scripts/app.min.js" type="text/javascript"></script>--%>
-<%--<script src="${ctx}/static/back/js/dateranges.js" type="text/javascript"></script>--%>
+<script src="${ctx}/static/back/js/handlebars/handlebars-v4.0.11.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/datatables/datatables.js" type="text/javascript"></script>
-<script src="${ctx}/static/back/assets/global/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<%--<script src="${ctx}/static/back/assets/global/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>--%>
 <script src="${ctx}/static/back/assets/global/plugins/bootstrap/js/tooltip.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/datatables/DataTables-1.10.16/js/dataTables.bootstrap.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/bootstrap-fileinput/js/fileinput.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/bootstrap-fileinput/locales/zh.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/assets/global/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js" type="text/javascript"></script>
-<!-- END THEME GLOBAL SCRIPTS -->
-<!-- BEGIN THEME LAYOUT SCRIPTS -->
-<%--<script src="${ctx}/static/back/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>--%>
 <script src="${ctx}/static/back/js/jquery-validator/jquery.validate.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/jquery-validator/locale/messages_zh.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/underscore/underscore.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/bootstrap-paginator/1.0.2/bootstrap-paginator.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/util/utils.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/city-picker/js/city-picker.data.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/city-picker/js/city-picker.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/custom/global-init.js" type="text/javascript"></script>
-<!-- END THEME LAYOUT SCRIPTS -->
 <sitemesh:getProperty property="page.page_script"></sitemesh:getProperty>
 </body>
 </html>

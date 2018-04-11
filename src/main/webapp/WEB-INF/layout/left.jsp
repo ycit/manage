@@ -34,37 +34,37 @@
         data-slide-speed="200" style="padding-top: 20px">
         <li class="nav-item user-manager">
             <a href="${ctx}/back/users" class="nav-link">
-                <i class="icon-settings"></i>
+                <span aria-hidden="true" class="icon-users"></span>
                 <span class="title">用户管理</span>
             </a>
         </li>
         <li class="nav-item  goods-manager">
             <a href="${ctx}/back/goods" class="nav-link">
-                <i class="icon-bar-chart"></i>
+                <i class="fa fa-cubes"></i>
                 <span class="title">商品管理</span>
             </a>
         </li>
         <li class="nav-item  order-manager">
             <a href="${ctx}/back/orders" class="nav-link">
-                <i class="icon-grid"></i>
+                <span aria-hidden="true" class="icon-basket-loaded"></span>
                 <span class="title">订单管理</span>
             </a>
         </li>
         <li class="nav-item  store-manager">
             <a href="${ctx}/back/stores" class="nav-link">
-                <i class="icon-rocket"></i>
+                <i class="fa fa-institution"></i>
                 <span class="title">专卖店管理</span>
             </a>
         </li>
         <li class="nav-item  news-manager">
             <a href="${ctx}/back/newses" class="nav-link">
-                <i class="icon-rocket"></i>
+                <i class="fa fa-newspaper-o"></i>
                 <span class="title">资讯管理</span>
             </a>
         </li>
         <li class="nav-item  dict-manager">
             <a href="${ctx}/back/dict" class="nav-link">
-                <i class="icon-rocket"></i>
+                <i class="fa fa-bars"></i>
                 <span class="title">字典表管理</span>
             </a>
         </li>

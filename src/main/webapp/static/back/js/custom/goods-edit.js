@@ -18,9 +18,9 @@ $(function () {
             showRemove: false,
             showCancel:true,
             browseIcon: '<i class="glyphicon glyphicon-upload"></i>&nbsp;',
-            maxFileCount: 5, //表示允许同时上传的最大文件个数
+            maxFileCount: 1, //表示允许同时上传的最大文件个数
             maxFileSize: 1000,
-            autoReplace: false,
+            autoReplace: true,
             allowedFileExtensions: ['jpg', 'png', 'bmp', 'jpeg'],//接收的文件后缀
             enctype: 'multipart/form-data',
             dropZoneEnabled: false,//是否显示拖拽区域

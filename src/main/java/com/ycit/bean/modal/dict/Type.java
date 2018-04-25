@@ -1,6 +1,6 @@
 package com.ycit.bean.modal.dict;
 
-import com.ycit.bean.base.Base;
+import com.ycit.bean.base.BaseBean;
 import com.ycit.bean.criteria.DictForm;
 import org.springframework.beans.BeanUtils;
 
@@ -10,7 +10,7 @@ import org.springframework.beans.BeanUtils;
  * @author xlch
  * @Date 2018-03-23 10:12
  */
-public class Type extends Base {
+public class Type extends BaseBean {
 
     private int id;
     private String name;

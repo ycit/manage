@@ -8,7 +8,7 @@ import java.util.Date;
  * @author xlch
  * @Date 2018-03-21 12:34
  */
-public class Base {
+public class BaseBean {
 
     private Date createTime;
     private Date modifyTime;

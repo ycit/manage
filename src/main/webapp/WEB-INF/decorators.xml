@@ -2,8 +2,6 @@
 <decorators defaultdir="/WEB-INF/layout/">
     <excludes>
         <pattern>/static/*</pattern>
-        <pattern>/front/login/home</pattern>
-        <pattern>/front/register/home</pattern>
         <pattern>/back/login</pattern>
     </excludes>
 

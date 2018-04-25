@@ -6,7 +6,7 @@ package com.ycit.bean.modal.dict;
  * @author xlch
  * @Date 2018-03-23 9:56
  */
-public class Info extends DictBase {
+public class Info extends DictBaseBean {
 
     public Info() {
     }

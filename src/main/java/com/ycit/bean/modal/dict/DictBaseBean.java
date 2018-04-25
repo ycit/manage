@@ -1,28 +1,28 @@
 package com.ycit.bean.modal.dict;
 
-import com.ycit.bean.base.Base;
+import com.ycit.bean.base.BaseBean;
 
 /**
  *  字典基类
  * @author xlch
  * @Date 2018-03-22 11:02
  */
-public class DictBase extends Base {
+public class DictBaseBean extends BaseBean {
 
     private int id;
     private int typeId;
     private String code;
     private String name;
 
-    public DictBase() {
+    public DictBaseBean() {
     }
 
-    public DictBase(int typeId, String name) {
+    public DictBaseBean(int typeId, String name) {
         this.typeId = typeId;
         this.name = name;
     }
 
-    public DictBase(int id, int typeId, String code, String name) {
+    public DictBaseBean(int id, int typeId, String code, String name) {
         this.id = id;
         this.typeId = typeId;
         this.code = code;

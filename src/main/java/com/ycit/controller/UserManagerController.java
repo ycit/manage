@@ -52,19 +52,6 @@ public class UserManagerController {
        return userService.finds();
     }
 
-    /**
-     * 用户金额充值请求
-     * @param num 充值额度
-     * @param id 用户id
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/users/inpour", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-    public int inpour(@RequestParam("num")int num, @RequestParam("id")int id) {
-        userService.updateBalance(id, num);
-        User user = userService.findById(id);
-        return user.getBalance();
-    }
 
     /**
      * 删除用户请求

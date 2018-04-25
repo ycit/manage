@@ -1,7 +1,6 @@
 package com.ycit.controller;
 
 import com.ycit.bean.criteria.LoginForm;
-import com.ycit.service.AdminService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.stream.Collectors;
 
@@ -30,15 +28,9 @@ import java.util.stream.Collectors;
 @RequestMapping("/back")
 public class LoginController {
 
-    private AdminService adminService;
-
-    @Resource
-    public void setAdminService(AdminService adminService) {
-        this.adminService = adminService;
-    }
-
     /**
      * 登录页面
+     *
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -48,8 +40,9 @@ public class LoginController {
 
     /**
      * 发起登录请求，form表单提交 为 post
+     *
      * @param loginForm 表单数据
-     * @param result 数据是否合法验证
+     * @param result    数据是否合法验证
      * @return 返回登录结果
      */
     @ResponseBody
@@ -57,7 +50,7 @@ public class LoginController {
     public String login(@Valid LoginForm loginForm, BindingResult result) {
         if (result.hasErrors()) {
             return result.getAllErrors().stream().map(
-                    ObjectError:: getDefaultMessage
+                    ObjectError::getDefaultMessage
             ).collect(Collectors.joining(","));
         }
         UsernamePasswordToken token = new UsernamePasswordToken(loginForm.getUsername(), loginForm.getPassword(), loginForm.isRemember());
@@ -78,6 +71,7 @@ public class LoginController {
 
     /**
      * 登出请求，shiro 移除 session 跳转到登录页面
+     *
      * @return
      */
     @RequestMapping("/logout")

@@ -6,13 +6,39 @@ package com.ycit.bean.modal;
  * @author xlch
  * @Date 2018-03-21 12:29
  */
-public class User extends Admin {
+public class User {
 
+    private int id;
+    private String username;
+    private String password;
+    private String role;
     private String nickname;
     private int sex;
-    private String birthday;
     private String img;
-    private int balance;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getNickname() {
         return nickname;
@@ -30,14 +56,6 @@ public class User extends Admin {
         this.sex = sex;
     }
 
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
     public String getImg() {
         return img;
     }
@@ -46,11 +64,11 @@ public class User extends Admin {
         this.img = img;
     }
 
-    public int getBalance() {
-        return balance;
+    public String getRole() {
+        return role;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

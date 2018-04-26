@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>电池在线销售平台后台管理:<sitemesh:title/></title>
+    <title>系统管理</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta http-equiv="Cache-Control" content="no-store" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -57,7 +57,7 @@
         <div class="page-logo">
             <img src="${ctx}/static/back/img/cart.jpg" alt="logo" class="logo-default" />
         </div>
-        <div class="site-title">电池在线销售平台后台管理</div>
+        <div class="site-title">系统管理</div>
         <!-- END LOGO -->
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
         <%--<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>--%>
@@ -86,7 +86,7 @@
 <div class="container">
     <div class="page-container">
         <div class="page-sidebar-wrapper">
-            <%@ include file="/WEB-INF/layout/left.jsp" %>
+            <%@ include file="/WEB-INF/layout/left-double.jsp" %>
         </div>
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
@@ -126,6 +126,7 @@
 <script src="${ctx}/static/back/js/jquery-validator/locale/messages_zh.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/underscore/underscore.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/bootstrap-paginator/1.0.2/bootstrap-paginator.js" type="text/javascript"></script>
+<script src="${ctx}/static/back/js/ztree/jquery.ztree.all.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/util/utils.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/city-picker/js/city-picker.data.js" type="text/javascript"></script>
 <script src="${ctx}/static/back/js/city-picker/js/city-picker.js" type="text/javascript"></script>

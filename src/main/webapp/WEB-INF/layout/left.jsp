@@ -32,7 +32,7 @@
     <input type="hidden" id="menuId" value="<decorator:getProperty property='body.hl' default='' />">
     <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true"
         data-slide-speed="200" style="padding-top: 20px">
-        <li class="nav-item user-manager">
+        <li class="nav-item user-manage">
             <a href="${ctx}/back/users" class="nav-link">
                 <span aria-hidden="true" class="icon-users"></span>
                 <span class="title">用户管理</span>

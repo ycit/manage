@@ -77,8 +77,8 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            com.ycit.config.AppConfig
-            com.ycit.config.DevConfig,
+            com.ycit.manage.config.AppConfig
+            com.ycit.manage.config.DevConfig,
         </param-value>
     </context-param>
 
@@ -106,7 +106,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>com.ycit.config.MvcConfig</param-value>
+            <param-value>com.ycit.manage.config.MvcConfig</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

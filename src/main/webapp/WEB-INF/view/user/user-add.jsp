@@ -64,13 +64,14 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">用户名</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="name" value="${name}" class="form-control input-medium" placeholder="">
+                                                <input id="username" type="text" name="username" value="${name}" class="form-control input-medium" placeholder="">
+                                                <%--<label class="error hide" id="username-check"></label>--%>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">密码</label>
                                             <div class="col-md-9">
-                                                <input type="password" name="password" value="${name}" class="form-control input-medium" placeholder="">
+                                                <input id="password" type="password" name="password" value="${name}" class="form-control input-medium" placeholder="">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -82,13 +83,13 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">全名</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="name" value="${name}" class="form-control input-medium" placeholder="">
+                                                <input type="text" name="fullName" value="${name}" class="form-control input-medium" placeholder="">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">昵称</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="name" value="${name}" class="form-control input-medium" placeholder="">
+                                                <input type="text" name="nickname" value="${name}" class="form-control input-medium" placeholder="">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -102,43 +103,38 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label">所属部门</label>
-                                            <input id="brand-name" type="hidden" value="<c:if test='${brands != null && brands.size() > 0}'>${brands[0].name}</c:if>" name="brandName">
+                                            <label class="col-md-3 control-label">部门</label>
+                                            <input type="hidden" name="deptId" value="" id="dept-id">
                                             <div class="col-md-9">
-                                                <select id="brand-select" class="form-control input-medium" name="brandId">
-                                                    <c:if test="${brands != null && brands.size() > 0}">
-                                                        <c:forEach items="${brands}" var="brand">
-                                                            <option value="${brand.id}">${brand.name}</option>
-                                                        </c:forEach>
-                                                    </c:if>
-                                                    <c:if test="${brands == null || brands.size() == 0}">
-                                                        <option value="">暂无可选品牌</option>
-                                                    </c:if>
+                                                <input id="dept-input" type="text" class="form-control input-medium" readonly="readonly" name="deptName">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">职位</label>
+                                            <div class="col-md-9">
+                                                <select id="job-select" class="form-control input-medium" name="jobId">
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label">所属岗位</label>
-                                            <input id="store-name" type="hidden" value="<c:if test='${stores != null && stores.size() > 0}'>${stores[0].name}</c:if>" name="storeName">
+                                            <label class="col-md-3 control-label">上传头像</label>
                                             <div class="col-md-9">
-                                                <select id="store-select" class="form-control input-medium" name="storeId">
-                                                    <c:if test="${stores != null && stores.size() > 0}">
-                                                        <c:forEach items="${stores}" var="store">
-                                                            <option value="${store.id}">${store.name}</option>
-                                                        </c:forEach>
-                                                    </c:if>
-                                                    <c:if test="${stores == null || stores.size() == 0}">
-                                                        <option value="">暂无可选专卖店</option>
-                                                    </c:if>
-                                                </select>
+                                                <input id="user-img-input" type="file" name="img">
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button data-click="save" type="button" class="btn green">保存</button>
+                                                <button data-click="back" type="button" class="btn default">返回</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="dept-tree" class="dept-tree hide">
+                                        <ul id="tree" class="ztree"></ul>
                                     </div>
                                 </form>
-                            </div>
-                            <div>
-                                <ul id="tree" class="ztree"></ul>
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_15_2">
@@ -157,35 +153,35 @@
                         </div>
                         <div class="tab-pane" id="tab_15_3">
                             <div class="portlet-body form">
-                                <form id="pw-form" class="form-horizontal">
-                                    <div class="form-body">
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">当前密码</label>
-                                            <div class="col-md-4">
-                                                <input type="password" class="form-control" name="oldPw">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">新&nbsp;&nbsp;密&nbsp;&nbsp;码</label>
-                                            <div class="col-md-4">
-                                                <input type="password" id="password" class="form-control" name="newPw">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">确认密码</label>
-                                            <div class="col-md-4">
-                                                <input type="password" class="form-control" name="reNewPw">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-actions">
-                                        <div class="row">
-                                            <div class="col-md-offset-3 col-md-9">
-                                                <button data-click="password" type="button" class="btn green">保存</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                <%--<form id="pw-form" class="form-horizontal">--%>
+                                    <%--<div class="form-body">--%>
+                                        <%--<div class="form-group">--%>
+                                            <%--<label class="col-md-3 control-label">当前密码</label>--%>
+                                            <%--<div class="col-md-4">--%>
+                                                <%--<input type="password" class="form-control" name="oldPw">--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="form-group">--%>
+                                            <%--<label class="col-md-3 control-label">新&nbsp;&nbsp;密&nbsp;&nbsp;码</label>--%>
+                                            <%--<div class="col-md-4">--%>
+                                                <%--<input type="password" id="password" class="form-control" name="newPw">--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="form-group">--%>
+                                            <%--<label class="col-md-3 control-label">确认密码</label>--%>
+                                            <%--<div class="col-md-4">--%>
+                                                <%--<input type="password" class="form-control" name="reNewPw">--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                    <%--<div class="form-actions">--%>
+                                        <%--<div class="row">--%>
+                                            <%--<div class="col-md-offset-3 col-md-9">--%>
+                                                <%--<button data-click="password" type="button" class="btn green">保存</button>--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</form>--%>
                             </div>
 
                         </div>
@@ -194,6 +190,12 @@
             </div>
         </div>
     </div>
+
+    <script type="text/html" id="job-select-template">
+            {{#each jobs}}
+                  <option value="{{id}}">{{fullName}}</option>
+            {{/each}}
+    </script>
 
     <content tag="page_script">
         <script src="${ctx}/static/back/js/util/ztree-util.js" type="text/javascript"></script>

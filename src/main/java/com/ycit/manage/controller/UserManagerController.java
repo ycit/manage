@@ -1,17 +1,19 @@
 package com.ycit.manage.controller;
 
+import com.ycit.manage.bean.base.ApiResponse;
+import com.ycit.manage.bean.criteria.PwForm;
 import com.ycit.manage.bean.modal.User;
 import com.ycit.manage.bean.vo.UserVo;
 import com.ycit.manage.service.UserService;
 import com.ycit.manage.service.builder.UserVoBuilder;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/back")
-public class UserManagerController {
+public class UserManagerController extends BaseController {
 
     private UserService userService;
 
@@ -77,6 +79,72 @@ public class UserManagerController {
     @RequestMapping(value = "/users/delete", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public int delete(@RequestParam("id")int id) {
         return userService.deleteById(id);
+    }
+
+    /**
+     * 新增用户请求
+     * @param user
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/users/add", method = RequestMethod.POST)
+    public User insert(User user) {
+        return userService.insert(user);
+    }
+
+    /**
+     * 判断该用户名是否有效
+     * @param username
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/users/valid", method = RequestMethod.GET)
+    public boolean findByUsername(@RequestParam("username")String username, @RequestParam(value = "id", required = false, defaultValue = "-1")int id) {
+        User user;
+        if (id == -1) {
+            user =  userService.findByUsername(username);
+        } else {
+            user = userService.findByIdAndUsername(id, username);
+        }
+        if (user == null) {
+            return true;
+        }
+        return false;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/users/img/upload")
+    public User uploadImg(@RequestParam("img") MultipartFile img, @RequestParam("id")int id) {
+        return userService.doUploadImg(id, img);
+    }
+
+    @RequestMapping(value = "/users/edit/home")
+    public String editHome(@RequestParam("id")int id, Model model) {
+        model.addAttribute("id", id);
+        return "/user/user-edit";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/users/{id}")
+    public User findById(@PathVariable("id")int id) {
+        return userVoBuilder.buildOne(userService.findById(id));
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/users/edit", method = RequestMethod.POST)
+    public User edit(User user) {
+        return userService.update(user);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/users/pw", method = RequestMethod.POST)
+    public ApiResponse<String> updatePw(PwForm form) {
+        String msg =  userService.doChangePw(form);
+        if (StringUtils.isNotBlank(msg)) {
+            return error(400, msg);
+        } else {
+            return success(new ArrayList(), 0);
+        }
     }
 
 }

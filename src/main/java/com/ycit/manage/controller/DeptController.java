@@ -31,7 +31,7 @@ public class DeptController {
     @RequestMapping(value = "/tree", method = RequestMethod.GET)
     public List<ZTreeNode> findTree() {
         List<ZTreeNode> treeNodes =  deptService.findTree();
-        treeNodes.add(ZTreeNode.createParent());
+//        treeNodes.add(ZTreeNode.createParent());
         return treeNodes;
     }
 

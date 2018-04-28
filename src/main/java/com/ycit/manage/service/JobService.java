@@ -5,6 +5,7 @@ import com.ycit.manage.mapper.JobMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 职位 service 层
@@ -23,6 +24,10 @@ public class JobService {
 
     public Job findById(int id) {
         return jobMapper.findById(id);
+    }
+
+    public List<Job> findByDeptId(int deptId) {
+        return jobMapper.findByDeptId(deptId);
     }
 
 }

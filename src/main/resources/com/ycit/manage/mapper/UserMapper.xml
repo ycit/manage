@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ycit.manage.mapper.UserMapper">
+    <insert id="insert" parameterType="com.ycit.manage.bean.modal.User"
+            useGeneratedKeys="true" keyColumn="user.id" keyProperty="user.id">
+        INSERT INTO user
+        (username,password,full_name,nickname,sex,birthday,dept_id,job_id)
+        VALUES
+        (#{user.username}, #{user.password}, #{user.fullName}, #{user.nickname},
+        #{user.sex}, #{user.birthday}, #{user.deptId}, #{user.jobId})
+    </insert>
+
+    <update id="update" parameterType="com.ycit.manage.bean.modal.User">
+        update user set
+        username = #{user.username}, full_name = #{user.fullName},
+        nickname = #{user.nickname}, sex = #{user.sex}, birthday = #{user.birthday},
+        dept_id = #{user.deptId}, job_id = #{user.jobId}, modify_time = current_timestamp
+        where id = #{user.id}
+    </update>
+</mapper>

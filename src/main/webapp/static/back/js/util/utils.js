@@ -50,6 +50,10 @@ utils.modal = {
     myConfirm: function () {
         var settings = resolveModal.apply({}, arguments);
         myConfirm.open(settings);
+    },
+    myAutoAlert:function () {
+        var settings = resolveModal.apply({}, arguments);
+        autoAlert.open(settings);
     }
 };
 var resolveModal = function () {//解析调用时的参数，并返回
@@ -154,6 +158,21 @@ var myConfirm = {
         document.activeElement && $(document.activeElement).blur();
         dom.modal({backdrop: 'static', show: true});
         this.init && this.init();
+    }
+};
+var autoAlert = {
+    id:null,
+    settings:{
+        content:"操作成功"
+    },
+    template:" <div id='{id}' class=\"alert-notice-wrap hide\"><div class=\"alert-notice\"><span class=\"glyphicon glyphicon-ok\"> </span><div>修改成功</div></div></div>",
+    open:function (options) {
+        if (!this.id) {
+            this.id = utils.uuid.uuid();
+            $('body').append(utils.template.nano(this.template, {id: this.id}));
+            setTimeout("$(\".alert-notice-wrap\").addClass(\"hide\")", 1000);
+        }
+        var dom = $('#' + this.id), setting = $.extend({}, this.settings, options);
     }
 }
 utils.template = {

@@ -20,7 +20,7 @@ public interface DeptMapper {
     @Select("select * from dept where id = #{id}")
     Dept findById(@Param("id") int id);
 
-    @Select("select id, full_name as name,pid AS p_id,( CASE WHEN (pid = 0 OR pid IS NULL) THEN 'true' ELSE 'false' END ) as isOpen from dept where status = 0")
+    @Select("select id, full_name as name,pid AS p_id,( CASE WHEN (pid = 0 OR pid IS NULL) THEN 'true' ELSE 'false' END ) as isOpen from dept where status = 0 order by id asc")
     List<ZTreeNode> findTree();
 
 }

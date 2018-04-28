@@ -50,12 +50,12 @@ $(function () {
         "orderable": false,
         "render":function (data, type, row, meta) {
             if (row.id !== 1) {
-
+                return "<a class='edit-action' title='编辑' data-id='" + row.id +"'><i class=\"fa fa-x fa-pencil\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+                    "<a class='delete-action' title='删除' data-id='" + row.id +"'><i class=\"fa fa-x fa-trash-o\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             } else {
                 return "<a class='edit-action' title='编辑' data-id='" + row.id +"'><i class=\"fa fa-x fa-pencil\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             }
-            // return "<a class='edit-action' title='编辑' data-id='" + row.id +"'><i class=\"fa fa-x fa-pencil\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
-            //     "<a class='delete-action' title='删除' data-id='" + row.id +"'><i class=\"fa fa-x fa-trash-o\"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
         }
     }];
     // 请求 用户数据
@@ -89,14 +89,9 @@ $(function () {
             }
         });
     });
-    // modal 弹框事件
-    $("#user-table").on("click", ".inpour", function () {
-        var id = $(this).data("id");
-        $("#user-id").attr("value", id);
-        $("#inpour-modal").modal("show");
-    });
+
     // 删除 行事件
-    $("#user-table tbody").on("click", "a.delete-action", function () {
+    var deleteClick = $("#user-table tbody").on("click", "a.delete-action", function () {
         var that = this;
         var sure = utils.modal.myConfirm("提示", "确认删除该行数据吗", function (sure) {
             if (sure) {
@@ -110,6 +105,12 @@ $(function () {
             }
         });
     });
+
+    var editClick =  $("#user-table tbody").on("click", "a.edit-action", function () {
+        var id = $(this).data("id");
+        window.location.href = "/back/users/edit/home?id=" + id;
+    });
+
 
     utils.quick.click({
         //充值提交

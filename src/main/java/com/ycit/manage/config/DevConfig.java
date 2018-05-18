@@ -1,6 +1,10 @@
 package com.ycit.manage.config;
 
+import com.alibaba.druid.filter.Filter;
+import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.wall.WallConfig;
+import com.alibaba.druid.wall.WallFilter;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +15,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 开发环境配置文件
@@ -24,13 +30,25 @@ public class DevConfig {
     @Bean
     public DataSource dataSource() throws SQLException {
         DruidDataSource dataSource = new DruidDataSource();  //NOSONAR
-        dataSource.setUrl("jdbc:mysql://localhost:3306/manage?serverTimezone=UTC&useSSL=false");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/manage?serverTimezone=UTC&useSSL=false&allowMultiQueries=true");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
         dataSource.setMaxActive(20);
         dataSource.setMaxWait(2000);
-        dataSource.setFilters("stat,wall");
+        List<Filter> filters = new ArrayList<>();
+        filters.add(wallFilter());
+        filters.add(new StatFilter());
+        dataSource.setProxyFilters(filters);
         return dataSource;
+    }
+
+    @Bean
+    public WallFilter wallFilter() {
+        WallFilter wallFilter = new WallFilter();
+        WallConfig wallConfig = new WallConfig();
+        wallConfig.setMultiStatementAllow(true);
+        wallFilter.setConfig(wallConfig);
+        return wallFilter;
     }
 
     //mybatis的配置

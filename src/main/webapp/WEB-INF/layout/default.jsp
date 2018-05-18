@@ -55,7 +55,7 @@
     <div class="page-header-inner container">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <img src="${ctx}/static/back/img/cart.jpg" alt="logo" class="logo-default" />
+            <img src="${ctx}/static/back/img/setting.jpg" alt="logo" class="logo-default" />
         </div>
         <div class="site-title">系统管理</div>
         <!-- END LOGO -->

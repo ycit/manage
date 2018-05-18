@@ -12,8 +12,9 @@ public class Dept extends BaseBean {
     private Integer id;
     private String fullName;
     private String nickname;
-    private int pid;
     private int level;
+    private int pId;
+    private String pIds;
 
     public Integer getId() {
         return id;
@@ -39,19 +40,27 @@ public class Dept extends BaseBean {
         this.nickname = nickname;
     }
 
-    public int getPid() {
-        return pid;
-    }
-
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
-
     public int getLevel() {
         return level;
     }
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int getpId() {
+        return pId;
+    }
+
+    public void setpId(int pId) {
+        this.pId = pId;
+    }
+
+    public String getpIds() {
+        return pIds;
+    }
+
+    public void setpIds(String pIds) {
+        this.pIds = pIds;
     }
 }

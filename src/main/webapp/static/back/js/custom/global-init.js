@@ -70,6 +70,11 @@ $(function () {
         return this.optional(element) || reg.test(value);
     }, "必须输入正整数");
 
+    jQuery.validator.addMethod("positive", function(value, element) {
+        var reg =  /^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|[1-9]\d*$/
+        return this.optional(element) || reg.test(value);
+    }, "必须输入正数");
+
     jQuery.validator.addMethod("bigEqualZero", function(value, element) {
         var reg = /^[1-9]\d*|0$/;
         return this.optional(element) || reg.test(value);
@@ -85,7 +90,7 @@ $(function () {
     }, "号码不合法(固定号码形式:xxx-xxxxx;手机号码为11位)");
 
     jQuery.validator.addMethod("float", function(value, element) {
-        var reg = /^[1-9]\d*\.*\d*|0\.\d*[1-9]\d*$/
+        var reg = /^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$/;
         return this.optional(element) || reg.test(value);
     }, "必须输入正浮点数");
 })

@@ -4,14 +4,29 @@
 <%@ taglib prefix="sitemash" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
+    <script type="text/javascript">
+    $(function () {
+    var navUsername = $("#nav-username").val();
+    if (navUsername !== "") {
+    utils.myAjax.get("/back/users/self", {}, function (data) {
+    if (data.img !== null) {
+    $("#user-img").attr("src", data.img);
+    } else {
+    $("#user-img").attr("src", "/static/back/img/user.jpg");
+    }
+    });
+    }
+    })
+    </script>
 <li class="menu login">
+    <input id="nav-username" type="hidden" value="<shiro:principal/>">
     <div class="menu-hd">
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
-                        <img id="user-img" alt="" class="img-circle"
+                        <img style="width: 30px" id="user-img" alt="" class="img-circle"
                              src="">
                         <span class="username username-hide-on-mobile"> <shiro:principal/> </span>
                         <i class="fa fa-angle-down"></i>

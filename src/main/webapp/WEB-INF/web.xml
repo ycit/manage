@@ -78,7 +78,9 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             com.ycit.manage.config.AppConfig
-            com.ycit.manage.config.DevConfig,
+            com.ycit.manage.config.DevConfig
+            com.ycit.manage.config.ScheduleDynamic
+            com.ycit.manage.config.ScheduleConfig
         </param-value>
     </context-param>
 

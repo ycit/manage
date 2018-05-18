@@ -1,6 +1,8 @@
 package com.ycit.manage.controller;
 
 import com.ycit.manage.bean.criteria.LoginForm;
+import com.ycit.manage.bean.modal.JobMenu;
+import com.ycit.manage.service.JobMenuService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -27,6 +31,13 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/back")
 public class LoginController {
+
+    private JobMenuService jobMenuService;
+
+    @Resource
+    public void setJobMenuService(JobMenuService jobMenuService) {
+        this.jobMenuService = jobMenuService;
+    }
 
     /**
      * 登录页面
@@ -81,6 +92,14 @@ public class LoginController {
             currentUser.logout();
         }
         return "redirect:/back/login";
+    }
+
+    @RequestMapping("/menu")
+    public void test() {
+        List<JobMenu> jobMenus = jobMenuService.findByJobId(1);
+        jobMenus.forEach(jobMenu -> {
+            System.out.println(jobMenu);
+        });
     }
 
 }

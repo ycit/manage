@@ -46,7 +46,16 @@ $(function () {
                 },
                 success:function (data) {
                     if (data === "success") {
-                        window.location.href="/back/users";
+                        utils.myAjax.get("/back/menus",{},function(data) {
+                            var firstMenu = data[0];
+                            var url;
+                            if (firstMenu.children) {
+                                url = firstMenu.children[0].url;
+                            } else {
+                                url = firstMenu.url;
+                            }
+                            window.location.href=url;
+                        });
                     }else {
                         $("#notice").html(data);
                     }

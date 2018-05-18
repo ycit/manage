@@ -76,9 +76,12 @@ $(function () {
             //向后台传递id作为额外参数，是后台可以根据id修改对应的图片地址。
             return {id: UserAdd.params.id};
         }
-    }).on('filebatchuploadcomplete', function (event, files, extra) {
-        console.log('File batch upload complete');
+    }).on('fileuploaded', function (event, data, previewId, index) {
+        $("#user-img").attr("src", data.response.img);
         window.location.href = "/back/users/home";
+    }.on('filebatchuploadcomplete', function (event, files, extra) {
+        // console.log('File batch upload complete');
+
     }).on('filebatchuploaderror', function (event, data, msg) {
         var form = data.form, files = data.files, extra = data.extra,
             response = data.response, reader = data.reader;

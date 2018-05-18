@@ -7,6 +7,8 @@ import com.ycit.manage.mapper.UserMapper;
 import com.ycit.manage.util.ConstantDefine;
 import com.ycit.manage.util.ImgUtil;
 import com.ycit.manage.util.UUIDGenerator;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -130,7 +132,16 @@ public class UserService {
             return msg;
         }
         return msg;
+    }
 
+    public int updateRoleById(int id, String role) {
+        return userMapper.updateRoleById(id, role);
+    }
+
+    public User findCurrent() {
+        Subject subject = SecurityUtils.getSubject();
+        String username = subject.getPrincipal().toString();
+        return this.findByUsername(username);
     }
 
 }

@@ -16,5 +16,10 @@ public class ConstantDefine {
     public static final String USER_IMG_PATH = "d:\\manage\\users\\";
     public static final String USER_IMG_ABSOLUTE_PATH = "img\\";
 
+    public static final int TASK_SYSTEM_MONITOR_EMAIL = 1;
+
+    public static final int TASK_STATUS_RUNNING = 0;
+    public static final String TASK_SYSTEM_MONITOR_PREFIX = "sys";
+
 
 }

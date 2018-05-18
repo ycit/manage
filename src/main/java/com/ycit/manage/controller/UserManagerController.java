@@ -77,8 +77,13 @@ public class UserManagerController extends BaseController {
      */
     @ResponseBody
     @RequestMapping(value = "/users/delete", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-    public int delete(@RequestParam("id")int id) {
-        return userService.deleteById(id);
+    public ApiResponse<Integer> delete(@RequestParam("id")int id) {
+        if (id == 1) {
+            return error(400, "无法删除超级管理员用户 ");
+        }
+        List<Integer> list = new ArrayList<>();
+        list.add(userService.deleteById(id));
+        return success(list, 1);
     }
 
     /**
@@ -145,6 +150,18 @@ public class UserManagerController extends BaseController {
         } else {
             return success(new ArrayList(), 0);
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/users/{id}/auth")
+    public int authorization(@PathVariable("id")int id, @RequestParam("role")String role) {
+        return userService.updateRoleById(id, role);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/users/self")
+    public User findSelf() {
+        return userService.findCurrent();
     }
 
 }

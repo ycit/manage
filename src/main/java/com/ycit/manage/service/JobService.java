@@ -1,5 +1,6 @@
 package com.ycit.manage.service;
 
+import com.ycit.manage.bean.criteria.JobForm;
 import com.ycit.manage.bean.modal.Job;
 import com.ycit.manage.mapper.JobMapper;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,23 @@ public class JobService {
 
     public List<Job> findByDeptId(int deptId) {
         return jobMapper.findByDeptId(deptId);
+    }
+
+    public List<Job> finds(JobForm jobForm) {
+        return jobMapper.finds(jobForm);
+    }
+
+    public Job insert(Job job) {
+        jobMapper.insert(job);
+        return this.findById(job.getId());
+    }
+
+    public int delete(int id) {
+        return jobMapper.deleteById(id);
+    }
+
+    public int update(Job job) {
+        return jobMapper.update(job);
     }
 
 }

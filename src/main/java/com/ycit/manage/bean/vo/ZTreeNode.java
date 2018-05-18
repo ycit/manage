@@ -23,7 +23,7 @@ public class ZTreeNode {
         zTreeNode.setId(0);
         zTreeNode.setName("顶级");
         zTreeNode.setOpen(true);
-        zTreeNode.setPId(0);
+        zTreeNode.setpId(0);
         return zTreeNode;
     }
 
@@ -35,11 +35,11 @@ public class ZTreeNode {
         this.id = id;
     }
 
-    public int getPId() {
+    public int getpId() {
         return pId;
     }
 
-    public void setPId(int pId) {
+    public void setpId(int pId) {
         this.pId = pId;
     }
 

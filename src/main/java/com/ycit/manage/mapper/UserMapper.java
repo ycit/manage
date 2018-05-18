@@ -37,4 +37,7 @@ public interface UserMapper {
     @Update("update user set password = #{pw} where id = #{id}")
     int updatePwById(@Param("id")int id, @Param("pw")String pw);
 
+    @Update("update user set role = #{role} where id = #{id}")
+    int updateRoleById(@Param("id")int id, @Param("role")String role);
+
 }

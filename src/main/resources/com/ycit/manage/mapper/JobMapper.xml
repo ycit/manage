@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ycit.manage.mapper.JobMapper">
+
+    <select id="finds" parameterType="com.ycit.manage.bean.criteria.JobForm"
+            resultType="com.ycit.manage.bean.modal.Job">
+        select * from job
+        where status = 0
+        <if test="job.name != null">
+            and (full_name like CONCAT(CONCAT('%', #{job.name}),'%')
+            or nickname like CONCAT(CONCAT('%', #{job.name}),'%'))
+        </if>
+        <if test="job.deptId != 0">
+            and dept_id = #{job.deptId}
+        </if>
+        order by id asc
+    </select>
+
+</mapper>

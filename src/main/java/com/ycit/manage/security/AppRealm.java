@@ -10,6 +10,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Resource;
+
 /**
  * shiro custom realm
  *
@@ -22,6 +24,10 @@ public class AppRealm extends AuthorizingRealm {
 
     private UserService userService;
 
+    @Resource
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public boolean supports(AuthenticationToken token) {
@@ -35,7 +41,7 @@ public class AppRealm extends AuthorizingRealm {
         if (user != null) {
             SimpleAuthorizationInfo authcInfo = new SimpleAuthorizationInfo();
             authcInfo.addRole(user.getRole());
-            authcInfo.addStringPermission(user.getRole());
+            authcInfo.addStringPermission("common");
             return authcInfo;
         }
         return null;

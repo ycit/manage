@@ -37,8 +37,8 @@
 <body class=" login">
 <!-- BEGIN LOGO -->
 <div class="logo">
-    <a href="${ctx}/front/index">
-        <img src="${ctx}/static/back/img/shop.jpg" alt=""> </a>
+    <a href="javascript:void(0)">
+        <img src="${ctx}/static/back/img/setting.jpg" alt=""> </a>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
@@ -46,7 +46,7 @@
     <!-- END FORGOT PASSWORD FORM -->
     <!-- BEGIN REGISTRATION FORM -->
     <form id="login-form" class="login-form" novalidate="novalidate">
-        <h3 class="form-title">管理员登录</h3>
+        <h3 class="form-title">用户登录</h3>
         <div class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
             <span> Enter any username and password. </span>

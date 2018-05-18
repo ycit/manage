@@ -109,14 +109,12 @@ $(function () {
                 return {id: user.id};
             }
         }).on('fileuploaded', function (event, data, previewId, index) {
-            // $("#user-img").attr("src", data.response.img);
-            // $(".alert-notice-wrap").removeClass("hide");
-            // setTimeout("$(\".alert-notice-wrap\").addClass(\"hide\")", 1000);
-            // console.log("fileloaded");
-        }).on('filebatchuploadcomplete', function (event, files, extra) {
+            $("#user-img").attr("src", data.response.img);
             $(".alert-notice-wrap").removeClass("hide");
             autoAlert();
             console.log('File batch upload complete');
+        }).on('filebatchuploadcomplete', function (event, files, extra) {
+
         }).on('filebatchuploaderror', function (event, data, msg) {
             alert(msg);
         });

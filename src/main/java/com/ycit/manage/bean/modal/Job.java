@@ -14,6 +14,16 @@ public class Job extends BaseBean {
     private String nickname;
     private int deptId;
 
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", deptId=" + deptId +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: xlch
-  Date: 2017/2/13
-  Time: 8:58
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>--%>
@@ -49,12 +42,12 @@
                         <li class="active">
                             <a href="#tab_15_1" data-toggle="tab" aria-expanded="true"> 基本信息 </a>
                         </li>
-                        <li class="">
-                            <a href="#tab_15_2" data-toggle="tab" aria-expanded="false"> 头像照片 </a>
-                        </li>
-                        <li class="">
-                            <a href="#tab_15_3" data-toggle="tab" aria-expanded="false"> 密码修改 </a>
-                        </li>
+                        <%--<li class="">--%>
+                            <%--<a href="#tab_15_2" data-toggle="tab" aria-expanded="false"> 头像照片 </a>--%>
+                        <%--</li>--%>
+                        <%--<li class="">--%>
+                            <%--<a href="#tab_15_3" data-toggle="tab" aria-expanded="false"> 密码修改 </a>--%>
+                        <%--</li>--%>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_15_1">
@@ -192,9 +185,14 @@
     </div>
 
     <script type="text/html" id="job-select-template">
-            {{#each jobs}}
-                  <option value="{{id}}">{{fullName}}</option>
-            {{/each}}
+        {{#if jobs.length}}
+        {{#each jobs}}
+        <option value="{{id}}">{{fullName}}</option>
+        {{/each}}
+        {{else}}
+        <option value="">暂无职位</option>
+        {{/if}}
+
     </script>
 
     <content tag="page_script">
